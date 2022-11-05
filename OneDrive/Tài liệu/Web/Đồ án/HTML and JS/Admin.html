@@ -1,0 +1,200 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Huchuynh">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/grid.css">
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/DoAn1.css">
+    <link rel="stylesheet" href="../CSS/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="../image/logo.png">
+    <title>ADMIN</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="../image/logo.png" alt="Phone">
+            <div>BLACK PHONE</div>
+        </div>
+        <div class="header-content">
+            <div class="input">
+                <input type="text" placeholder="Nhập tên điện thoại cần tìm" id="search" oninput="search1()">
+                <button onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="info">
+                <ul>
+                    <li class="li" onclick="currentSlide(1)">
+                        <span>Trang chủ</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(2)">
+                        <span>Sản phẩm</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(3)">
+                        <span>Đơn hàng</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(4)">
+                        <span>Khách hàng</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-account">
+            <div class="header-account-icon">
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+            <div class="header-account-name">
+                    ADMIN
+            </div>
+        </div>
+    </div>
+    
+    <div class="home-page mySlides">
+        <div class="slider-ads">
+            <img class="ads" src="../image/QC1.webp" alt="">
+            <img class="ads" src="../image/QC2.webp" alt="">
+            <img class="ads" src="../image/QC3.webp" alt="">
+            <img class="ads" src="../image/QC4.webp" alt="">
+            <img class="ads" src="../image/QC5.webp" alt="">
+        </div>
+    </div>
+
+    <div class="container mySlides" >
+        <div class="grid wide content">
+            <div class="row">
+                <div class="col p-2 t-0 m-0">
+                    <div class="category">
+                       <ul class="category_list">
+                            <li class="category_iteam   category_iteam_active " id="Ip-category"> 
+                                <div>
+                                    <img src="../image/logo-iphone.png" alt="">
+                                </div>                         
+                            </li>
+                            <li class="category_iteam" id="Samsung-category">
+                                <div>
+                                    <img src="../image/logo-samsung.png" alt="">
+                                </div>                                                         
+                            </li>
+                            <li class="category_iteam" id="Xiaomi-category">
+                                <div>
+                                    <img src="../image/logo-xiaomi.png" alt=""> 
+                                </div>                                                     
+                            </li>
+                            <li class="category_iteam" id="Vivo-category">
+                                <div>
+                                    <img src="../image/logo-vivo.png" alt="">
+                                </div>                       
+                            </li>
+                       </ul> 
+                    </div>
+                </div>
+                <div class="col p-10 t-12 m-12">
+                    <div class="home_filter">
+                        <span class="home_filter_lable">Tìm kiếm theo giá</span>
+                        <div id="searchextend" class="">
+                            <div>
+                                <select id="brandsearch" onchange="search2()">
+                                    <option value="all" >Tất cả</option>
+                                    <option value="iphone">iPhone</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="xiaomi">Xiaomi</option>
+                                    <option value="vivo">Vivo</option>
+                                </select>
+                            </div>
+                            <div> 
+                                <input type="text" id="priceform"  placeholder="Giá từ" oninput="search2()"> &mdash;
+                                <input type="text" id="priceto" placeholder="Đến" oninput="search2()">
+                                <button class="search_btn" onclick="search2()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                            <div class="addProduct">
+                                <button id="addProduct-btn" onclick="document.getElementById('addProduct-form').style.display='block'">Thêm sản phẩm</button>
+                            </div>
+                            <div class="addProduct-form" id="addProduct-form">
+                                <form>
+                                    <div class="addProduct-form-header">
+                                        <span onclick="document.getElementById('addProduct-form').style.display='none'" class="close" id="close" >&times;</span>
+                                        <h2>Thêm sản phẩm</h2>
+                                    </div>
+                                    <div class="addProduct-form-content">
+                                        <div>
+                                            <p>ID: </p>
+                                            <input type="text" id="addprd-id" placeholder="ID">
+                                        </div>
+                                        <div>
+                                            <p>Tên sản phẩm: </p>
+                                            <input type="text" id="addprd-name" placeholder="Tên sản phẩm">
+                                        </div>
+                                        <div>
+                                            <p>Màn hình: </p>
+                                            <input type="text" id="addprd-screen" placeholder="Màn hình">
+                                        </div>
+                                        <div>
+                                            <p>Camera: </p>
+                                            <input type="text" id="addprd-camera" placeholder="Camera">
+                                        </div>
+                                        <div>
+                                            <p>Bộ nhớ: </p>
+                                            <input type="text" id="addprd-storage" placeholder="Bộ nhớ">
+                                        </div>
+                                        <div>
+                                            <p>Chip: </p>
+                                            <input type="text" id="addprd-chip" placeholder="Chip">
+                                        </div>
+                                        <div>
+                                            <p>Hãng: </p>
+                                            <input type="text" id="addprd-brand" placeholder="Hãng">
+                                        </div>
+                                        <div>
+                                            <p>Xuất xứ: </p>
+                                            <input type="text" id="addprd-origin" placeholder="Xuất xứ">
+                                        </div>
+                                        <div>
+                                            <p>Giá: </p>
+                                            <input type="text" id="addprd-price" placeholder="Giá">
+                                        </div>
+                                        <div>
+                                            <p>Ảnh: </p>
+                                            <input type="file" id="addprd-img">
+                                        </div>  
+                                    </div>  
+                                    <div class="addProduct-form-button">
+                                        <div class="add-product">
+                                            <button type="button" id="add-product-btn">Thêm sản phẩm</button>
+                                        </div>
+                                    </div>                 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home_product">
+                        <div class="row" id="product-perform">
+                            <!-- HIEN THI SAN PHAM -->
+                        </div>
+                    </div>
+                    <div id="page">
+                        <!-- HIEN THI SO TRANG -->   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Phần chỉnh sửa sản phẩm -->
+        <div class="product-fix" id="product-fix">
+             <!-- HIEN THI CHINH SUA SAN PHAM -->
+        </div>
+    </div> 
+  
+    <div class="mySlides">
+        ĐƠN HÀNG
+    </div>
+
+    <div class="mySlides">
+        KHÁCH HÀNG
+    </div>
+
+
+</body> 
+<script src="https://kit.fontawesome.com/f26ba754df.js" crossorigin="anonymous"></script> 
+<script src="Admin.js"></script>
+</html>

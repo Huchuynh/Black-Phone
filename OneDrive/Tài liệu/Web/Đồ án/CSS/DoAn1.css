@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+:root {
+    --text-color: #171427;
+    --main-color: #fd4644;
+    --bg-color: #fff;
+}
+img {
+    width: 100%;
+}
+/* body {
+    color: var(--text-color);
+}
+
+
+
+/* Đây là phần Header */
+/* .header {
+    height: 120px;
+    background-color: skyblue;
+}
+ */
+
+/* Đây là phần Content */
+
+/* Phần danh mục */
+.container {
+    background-color: #f5f5f5;
+    z-index: 1;
+}
+
+.content {
+    padding-top: 30px;
+    display: block;                  /* Ẩn tạm thời sản phẩm */ 
+}
+.category {
+    background-color: white;
+    border-radius: 2px;
+    height: 290px;
+    max-height: 290px;
+}
+.category_heading {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(116, 115, 115);
+    padding: 12px 16px;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    text-transform: uppercase;
+}
+.category_heading_icon {
+    font-size: 1.4rem;
+    margin-right: 4px;
+}
+.category_list {
+    padding: 0 0 4px 0;
+    margin-left: 14px;
+    height: 100%;
+}
+.category_iteam {
+    position: relative; 
+    height: 50%; 
+
+    position: relative;
+    right: 0;
+    text-decoration: none;
+    color: rgb(75, 73, 73);
+    font-size: 1.6rem;
+    display: block;
+    padding: /* 12px 16px */ 25px 0px;
+    transition: right linear 0.1s;
+    
+}
+.category_iteam div {
+    height: 100%;
+    align-items: center;
+    padding: 24px;
+    border-radius: 60px;
+    border: 3px solid black;
+}
+.category_iteam div img {
+    height: 36.65px;
+    width: 168px;
+}
+
+.category_iteam div:hover {
+    border: 3px solid #2f80ed;
+    transition:0.2s;
+}
+
+.category_iteam::before {
+    content: "";
+    border-top: 1px solid #e1e1e1;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 32px;
+}
+.category_iteam:first-child::before {
+    display: none;
+}
+
+/* .category_iteam_active .category_iteam_link {
+    color: rgb(245, 84, 84); 
+} */
+
+/* Tạo mũi tên nhỏ trước đối tượng đang ở có class .category_iteam_active  */
+
+/* .category_iteam_active .category_iteam_link::before {
+    content: "";
+    border: 4px solid;
+    border-color: transparent transparent transparent rgb(245, 84, 84);
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+} */
+
+/* .category_iteam_link {
+    position: relative;
+    right: 0;
+    text-decoration: none;
+    color: rgb(75, 73, 73);
+    font-size: 1.6rem;
+    display: block;
+    padding: 12px 16px;
+    transition: right linear 0.1s;
+}
+.category_iteam_link:hover {
+    right: -4px;
+    color: rgb(245, 84, 84);
+} */
+
+/* Phần sản phẩm */
+.home_product_iteam_img {
+    width: 100%;
+    background-repeat: no-repeat;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.home_product_iteam {
+    height: 100%;
+    display: block;
+   background-color: white; 
+   margin-top: 10px;
+   position: relative;
+   border-radius: 2px;
+   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+   transition: transform linear 0.1s;
+   will-change: transform;
+}
+.home_product_iteam:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.5);
+    border: 1px solid #ed5537;
+}
+.home_product_iteam_name {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgb(40, 40, 40);
+    line-height: 1.6rem;
+    overflow: hidden;
+    margin: 7px 7px 6px;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.home_produc_iteam_price {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.home_product_price_curent {
+    font-size: 1.2rem;
+    color: red;
+    margin-left: 10px;
+}
+.home_product_iteam_origin {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px;
+    color: #595959;
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding-bottom: 10px;
+}
+.home_product {
+    margin-bottom: 28px;
+}
+
+

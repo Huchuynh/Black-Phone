@@ -1,0 +1,366 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Huchuynh">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/grid.css">
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/DoAn1.css">
+    <link rel="stylesheet" href="../CSS/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="../image/logo.png">
+    <title>Black Phone</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="../image/logo.png" alt="Phone">
+            <div>BLACK PHONE</div>
+        </div>
+        <div class="header-content">
+            <div class="input">
+                <input type="text" placeholder="Nhập tên điện thoại cần tìm" id="search" oninput="search1()">
+                <button onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="info">
+                <ul>
+                    <li class="li" onclick="currentSlide(1)">
+                        <span>Trang chủ</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(2)">
+                        <span>Sản phẩm</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(3)">
+                        <span>Giới thiệu</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(4)">
+                        <span>Liên Hệ</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-button">
+            <div class="div-sign">
+                <div><button onclick="document.getElementById('signup').style.display='block'">Đăng ký</button></div>
+                <div><button onclick="document.getElementById('signin').style.display='block'">Đăng nhập</button></div>
+            </div>
+            <div class="div-cart">
+                <button onclick="document.getElementById('cart').style.display='block'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <!-- <span>Giỏ hàng</span> -->
+                </button>
+            </div>    
+        </div>
+
+        <div id="signup" class="signup">
+                <form class="signup-form">
+                    <div class="signup-form-header">
+                        <h2><strong>Đăng Ký</strong></h2>
+                        <span onclick="document.getElementById('signup').style.display='none'" class="close" id="close" >&times;</span>                   
+                    </div>
+                    <div class="signup-form-content">
+                        <div>
+                            <input type="text" placeholder="Họ tên" name="uname" required>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Tên đăng ký" name="uname" required>
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Mật khẩu" name="psw" required>
+                        </div>
+                        <div>
+                            <button type="button">Đăng Ký</button>
+                        </div>                 
+                    </div>
+                </form>
+        </div>
+
+        <div id="signin" class="signin">
+                <form class="signin-form">
+                    <div class="signin-form-header">
+                        <h2><strong> Đăng nhập</strong></h2>
+                        <span onclick="document.getElementById('signin').style.display='none'" class="close" id="close" >&times;</span>                   
+                    </div>
+                    <div class="signin-form-content">
+                        <div>
+                            <input type="text" placeholder="Tên đăng nhập" id="uname" required>
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Mật khẩu" id="psw" required>
+                        </div>
+                        <div>
+                            <button type="button" id="signin-btn">Đăng nhập</button>
+                        </div>                 
+                    </div>
+                </form>
+        </div>
+
+        <div class="shopping-cart" id="cart">
+            <div class="shopping-cart-div">
+                <div class="cart-header">
+                    <span onclick="document.getElementById('cart').style.display='none'" class="close" id="close" >&times;</span>
+                    <h2><strong>GIỎ HÀNG</strong></h2>
+                </div>
+                <div class="cart-content" id="showCart">
+                    <p>GIỎ HÀNG ĐANG RỖNG</p> 
+                    <!-- <div class="cart-content-detail">
+                        <div class="cart-content-img">
+                            <img src="../image/iphone11.png" alt="">
+                        </div>
+                        <div class="cart-content-info">
+                            iPhone 11
+                            <br>
+                            <br>
+                            Giá: 10.000.000
+                        </div>
+                        <div class="cart-content-quantity">
+                            <input type="number">
+                        </div>
+                        <div class="cart-content-button">
+                            <button>
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="cart-total" id="cart-total">
+                     
+                </div>
+                <div class="cart-button">
+                    <button>
+                        Thanh toán
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="home-page mySlides">
+        <div class="slider-ads">
+            <img class="ads" src="../image/QC1.webp" alt="">
+            <img class="ads" src="../image/QC2.webp" alt="">
+            <img class="ads" src="../image/QC3.webp" alt="">
+            <img class="ads" src="../image/QC4.webp" alt="">
+            <img class="ads" src="../image/QC5.webp" alt="">
+        </div>
+    </div>
+
+    <div class="container mySlides" >
+        <div class="grid wide content">
+            <div class="row">
+                <div class="col p-2 t-0 m-0">
+                    <div class="category">
+                       <ul class="category_list">
+                            <li class="category_iteam   category_iteam_active " id="Ip-category"> 
+                                <div>
+                                    <img src="../image/logo-iphone.png" alt="">
+                                </div>                         
+                            </li>
+                            <li class="category_iteam" id="Samsung-category">
+                                <div>
+                                    <img src="../image/logo-samsung.png" alt="">
+                                </div>                                                         
+                            </li>
+                            <li class="category_iteam" id="Xiaomi-category">
+                                <div>
+                                    <img src="../image/logo-xiaomi.png" alt=""> 
+                                </div>                                                     
+                            </li>
+                            <li class="category_iteam" id="Vivo-category">
+                                <div>
+                                    <img src="../image/logo-vivo.png" alt="">
+                                </div>                       
+                            </li>
+                       </ul> 
+                    </div>
+                </div>
+                <div class="col p-10 t-12 m-12">
+                    <div class="home_filter">
+                        <span class="home_filter_lable">Tìm kiếm theo giá</span>
+                        <div id="searchextend" class="">
+                            <div>
+                                <select id="brandsearch" onchange="search2()">
+                                    <option value="all" >Tất cả</option>
+                                    <option value="iphone">iPhone</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="xiaomi">Xiaomi</option>
+                                    <option value="vivo">Vivo</option>
+                                </select>
+                            </div>
+                            <div> 
+                                <input type="text" id="priceform"  placeholder="Giá từ" oninput="search2()"> &mdash;
+                                <input type="text" id="priceto" placeholder="Đến" oninput="search2()">
+                                <button class="search_btn" onclick="search2()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home_product">
+                        <div class="row" id="product-perform">
+                            <!-- HIEN THI SAN PHAM -->
+                        </div>
+                    </div>
+                    <div id="page">
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Phần chi tiết sản phẩm -->
+        <div class="product-detail" id="product-detail">
+             <!-- <div class="product-detail-div">
+                <div class="pd-img">
+                    <img src="../image/iphone14.webp" alt="">
+                </div>
+                <div class="pd-main">
+                    <div class="info">
+                        <div>
+                            <h2>IPHONE 14 PROMAX</h2>
+                        <p>
+                            Màn hình: 6.7 inch
+                            <br>
+                            <br>
+                            Camera: 48.0 MP + 12.0 MP
+                            <br>
+                            <br>
+                            Bộ nhớ: 128 GB
+                            <br>
+                            <br>
+                            Chip: Apple A16 Bionic
+                            <br>
+                            <br>
+                            Giá: 35.000.000
+                        </p>
+                        </div>
+                        
+                    </div>
+                        
+                    <div class="quantity">
+                        <div><button>-</button></div>
+                        <div><input type="text"></div>
+                        <div><button>+</button></div>
+                    </div>
+                    <div class="button">
+                        <button>Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div> 
+  
+    <div class="mySlides">
+        Giới thiệu
+    </div>
+
+   <!-- LIEN HE -->
+    <section id="contact" class="mySlides">
+  
+            <h1 class="section-header">Liên Hệ</h1>
+            
+            <div class="contact-wrapper">
+            
+              
+              <form id="contact-form" class="form-horizontal" role="form">
+                 
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
+                  </div>
+                </div>
+          
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
+                  </div>
+                </div>
+          
+                <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+                
+                <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+                  <div class="alt-send-button">
+                    <i class="fa fa-paper-plane fa-2x"></i><span class="send-text"></span>
+                  </div>
+                
+                </button>
+                
+              </form>
+              
+              
+                <div class="direct-contact-container">
+          
+                  <ul class="contact-list">
+                    <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">273 An Dương Vương</span></i></li>
+                    
+                    <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:33333333" title="Di động">03 333 3333</a></span></i></li>
+                    
+                    <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="https://mail.google.com/" target="_blank" title="Email">blackphone@gmail.com</a></span></i></li>
+                    
+                  </ul>
+          
+                  <hr>
+                  <ul class="social-media-list">
+                    <li><a href="https://www.google.com/" target="_blank" class="contact-icon">
+                      <i class="fa fa-google fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/" target="_blank" class="contact-icon">
+                      <i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/" target="_blank" class="contact-icon">
+                      <i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                    </li>       
+                  </ul>
+                  <hr>
+          
+                  <div class="copyright">&copy; Tất cả đều được bảo mật</div>
+          
+                </div>
+              
+            </div>
+            
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-content"><span class="footer-content-header">Giới thiệu</span>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Tư vấn mua hàng</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <span class="footer-content-header">Chính sách chung</span>
+                <ul>
+                    <li><a href="#">Chính sách mua trả góp</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Chính sách giải quyết khiếu nại</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <span class="footer-content-header">Hỗ trợ khách hàng</span>
+                <ul>
+                    <li><a href="#">Thông tin thanh toán</a></li>
+                    <li><a href="#">Hotline CSKH</a></li>
+                    <li><a href="#">etc........</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <span class="footer-content-header"><h4>Chi nhánh</h4></span>
+                <ul>
+                    <li><a href="#">Hồ Chí Minh</a></li>
+                    <li><a href="#">Hà Nội</a></li>
+                    <li><a href="#">Đà Nẵng</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </footer>
+        
+
+</body> 
+<script src="https://kit.fontawesome.com/f26ba754df.js" crossorigin="anonymous"></script> 
+<script src="index.js"></script>
+</html>
+
