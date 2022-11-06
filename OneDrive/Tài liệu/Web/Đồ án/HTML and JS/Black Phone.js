@@ -789,6 +789,17 @@ function search2(){
 
 
 /*-------- */
+
+/* LIEN HE */
+document.querySelector('#contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.elements.name.value = '';
+    e.target.elements.email.value = '';
+    e.target.elements.message.value = '';
+  });
+/* ------------- */
+
+/* TAI KHOAN */
 let account = [{name : "admin",pwd : "123"}]
 
 document.getElementById('signin-btn').addEventListener("click",function(){
