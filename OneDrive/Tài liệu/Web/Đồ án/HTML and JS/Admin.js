@@ -477,6 +477,7 @@ function search2(){
     document.getElementById('product-perform').innerHTML = s;
 }
 
+/* -------- THEM SUA XOA SAN PHAM --------- */
 function updateProduct (productid) {
     document.getElementById('update-product-btn').addEventListener("click",function () {
         let id = document.getElementById("prd-id").value
