@@ -1,5 +1,6 @@
 createProduct()
-
+createAdmin()
+checklogin()
 // HOME PAGE //
 var myIndex = 0
 carousel ()
@@ -198,7 +199,7 @@ function createProduct() {
     }
 }
 
-let cartArr = []
+
 // HIEN THI SAN PHAM //
 
 /* HIEN THI SAN PHAM NGAU NHIEN */
@@ -562,12 +563,14 @@ function showProductDetail (productid) {
 
 //      GIO HANG       //
 function inCart(productid) {
+    let cartArr = JSON.parse(localStorage.getItem('cart'));
     if(cartArr == null) return false
     for(let i=0;i<cartArr.length;i++) {
         if(cartArr[i].id == productid) {
             return true         
         }
     }
+    localStorage.setItem('cart',JSON.stringify(cartArr));
     return false
 }
 function addToCart(productid) {
@@ -593,21 +596,41 @@ function addToCart(productid) {
     })
     quantity = countInput.value
     btnAddToCart.addEventListener("click",function() {
-        for(let i = 0 ; i < product.length ; i++) {
-            if(product[i].id === productid && inCart(product[i].id) == false) {
-                tmpProduct = product[i]
-                tmpProduct.quantity = quantity
-                cartArr.push(tmpProduct)
-            }
-            else if(product[i].id === productid && inCart(product[i].id) == true){
-                alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
+        if(localStorage.getItem('cart')===null){
+            let cartArr = []
+            for(let i = 0 ; i < product.length ; i++) {
+                if(product[i].id === productid && inCart(product[i].id) == false) {
+                    tmpProduct = product[i]
+                    tmpProduct.quantity = quantity
+                    cartArr.push(tmpProduct)
+                }
+                else if(product[i].id === productid && inCart(product[i].id) == true){
+                    alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
+                } 
             } 
+            localStorage.setItem('cart',JSON.stringify(cartArr));
         }
+        else {
+            let cartArr = JSON.parse(localStorage.getItem('cart'));
+            for(let i = 0 ; i < product.length ; i++) {
+                if(product[i].id === productid && inCart(product[i].id) == false) {
+                    tmpProduct = product[i]
+                    tmpProduct.quantity = quantity
+                    tmpProduct.totalPrice = tmpProduct.quantity * tmpProduct.price
+                    cartArr.push(tmpProduct)
+                }
+                else if(product[i].id === productid && inCart(product[i].id) == true){
+                    alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
+                } 
+            }
+            localStorage.setItem('cart',JSON.stringify(cartArr));
+        } 
         Add()
         closeProductDetail()
     })  
 }
 function Add(){
+    let cartArr = JSON.parse(localStorage.getItem('cart'));
     let s=""
     let total = 0;
     for(let i = 0 ; i < cartArr.length ; i++) {
@@ -641,22 +664,27 @@ function Add(){
     }
 }  
 function updateCart(value,productid) {
+    let cartArr = JSON.parse(localStorage.getItem('cart'));
     for (var i = 0; i < cartArr.length; i++) {
         if(cartArr[i].id === productid){
             cartArr[i].quantity = value;
+            cartArr[i].totalPrice = value * cartArr[i].price
         }
     } 
+    localStorage.setItem('cart',JSON.stringify(cartArr));
     Add()
 }
 function closeProductDetail() {
     document.getElementById("product-detail").style.display="none"
 }
 function deleteCartProduct(productid) {
+    let cartArr = JSON.parse(localStorage.getItem('cart'));
     for(let i = 0 ; i < cartArr.length ; i++) {
         if(cartArr[i].id === productid) {
             cartArr.splice(i,1);
         }
     }
+    localStorage.setItem('cart',JSON.stringify(cartArr));
     Add()
 }
 
@@ -811,13 +839,276 @@ document.querySelector('#contact-form').addEventListener('submit', (e) => {
 /* ------------- */
 
 /* TAI KHOAN */
-let account = [{name : "admin",pwd : "123"}]
+/* let account = [{name : "admin",pwd : "123"}]
 
 document.getElementById('signin-btn').addEventListener("click",function(){
     let accName = document.getElementById("uname").value
     let accPwd = document.getElementById("psw").value
     if(accName == "admin" && accPwd == "123")
         window.location.href = "Admin.html"
-})
+}) */
 
+
+/*DANG KY DANG NHAP */
+function showFormSignUp() {
+    document.getElementById('formsignup').style.display = 'block';
+}
+function closeFormSignUp() {
+    document.getElementById('formsignup').style.display = 'none';
+}
+function showFormLogin() {
+    document.getElementById('formlogin').style.display = 'block';
+}
+function closeFormLogin() {
+    document.getElementById('formlogin').style.display = 'none';
+}
+
+
+
+// USER
+function showPass() {
+    document.getElementById('password').type = 'text';
+    document.getElementById('eyes1').innerHTML = `<i class="fa-regular fa-eye pass_icon"></i>`
+}
+function hiddenPass() {
+    document.getElementById('password').type = 'password';
+    document.getElementById('eyesclose').style.display='block'
+    document.getElementById('eyes1').style.display='none'
+
+}
+function showPass2() {
+    document.getElementById('repassword').type = 'text';
+}
+function showPass3() {
+    document.getElementById('passwordlogin').type = 'text';
+}
+
+function createAdmin(){
+	if(localStorage.getItem('user')===null){
+        var userArray = [];
+		var user = {username: 'admin', password: '12345678', fullname: 'Tăng Quốc Tuấn', phone: '0867575163' , datesignup: '11-6-2022'};
+		userArray.push(user);
+		localStorage.setItem('user',JSON.stringify(userArray));
+	}
+}
+
+document.getElementById('formsignup').addEventListener('submit', createUser);
+document.getElementById('formlogin').addEventListener('submit', login);
+
+function createUser(e) {
+    e.preventDefault();
+    var name = document.getElementById('fullname');
+    var phone = document.getElementById('numberphone');
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+    var repassword = document.getElementById('repassword');
+    var flag = false;
+
+    // Phần kiểm tra Fullname người dùng
+    if (name.value.length === 0) {
+        document.getElementById('fullnameerror').style.display = 'block';
+        document.getElementById('fullname').style.border = '1px solid red';
+        name.focus();
+        flag = true;
+    }
+    else 
+            {
+                let ten_regex = /^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*/
+                if (!ten_regex.test(name.value))
+                {
+                    document.getElementById('fullnameerror').style.display = 'block';
+                    document.getElementById('fullnameerror').innerHTML= 'Tên không hợp lệ';
+                    document.getElementById('fullname').style.border = '1px solid red';
+                    flag = true;
+}
+                else {
+                    document.getElementById('fullname').style.border = '1px solid black';
+                    document.getElementById('fullnameerror').style.display = 'none';
+                } 
+                
+            }
+    
+    // Phần kiểm tra số điện thoại người dùng
+    if (phone.value.length === 0) {
+        document.getElementById('phoneerror').style.display = 'block';
+        document.getElementById('numberphone').style.border = '1px solid red';
+        phone.focus();
+        flag = true;
+    }
+    else
+            {
+                let phone_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+                if (!phone_regex.test(phone.value))
+                {
+                    document.getElementById('phoneerror').style.display = 'block';
+                    document.getElementById('phoneerror').innerHTML= 'Số điện thoại không hợp lệ';
+                    document.getElementById('numberphone').style.border = '1px solid red';
+                    flag = true;
+                }
+                else {
+                    document.getElementById('phoneerror').style.display = 'none';
+                    document.getElementById('numberphone').style.border = '1px solid black';
+                }
+                
+            }
+    
+    // Phần kiểm  tra tên đăng nhập người dùng
+    if (username.value.length === 0) {
+        document.getElementById('usernameerror').style.display = 'block';
+        document.getElementById('username').style.border = '1px solid red';
+        username.focus();
+        flag = true;
+    }
+    else {
+        document.getElementById('usernameerror').style.display = 'none';
+        document.getElementById('username').style.border = '1px solid black';
+
+    }
+    
+    // Phần kiểm tra mật khẩu người dùng
+    if (password.value.length === 0) {
+        document.getElementById('passerror').style.display = 'block';
+        document.getElementById('password').style.border = '1px solid red';
+        password.focus();
+        flag = true;
+    }
+    else
+        if (password.value.length != 8) {
+            document.getElementById('passerror').style.display = 'block';
+            document.getElementById('passerror').innerHTML = 'Mật khẩu phải đủ 8 kí tự';
+            document.getElementById('password').style.border = '1px solid red';
+            flag = true;
+        }
+        else {
+            document.getElementById('passerror').style.display = 'none';
+            document.getElementById('password').style.border = '1px solid black';
+
+        }
+    
+    // Phần kiểm tra mật khẩu nhập lại của người dùng
+    if (repassword.value.length === 0) {
+        document.getElementById('repasserror').style.display = 'block';
+        document.getElementById('repassword').style.border = '1px solid red';
+        flag = true;
+    }
+    else
+        if (repassword.value != password.value) {
+document.getElementById('repasserror').style.display = 'block';
+            document.getElementById('repasserror').innerHTML = 'Mật khẩu nhập lại không đúng';
+            document.getElementById('repassword').style.border = '1px solid red';
+            flag = true;
+        }
+        else {
+            document.getElementById('repasserror').style.display = 'none';
+            document.getElementById('repassword').style.border = '1px solid black';
+
+        }
+
+    if(flag==true){
+        return true;
+    }
+    var d = new Date();
+    var datesignup = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
+    var user = {username: username.value, password: password.value, fullname: name.value, phone: phone.value , datesignup: datesignup};
+    var userArray = JSON.parse(localStorage.getItem('user'));
+    for(var i=0;i<userArray.length;i++){
+        if(user.phone==userArray[i].phone){
+            document.getElementById('phoneerror').style.display = 'block';
+            document.getElementById('phoneerror').innerHTML = 'Số điện thoại đã tồn tại';
+            document.getElementById('numberphone').style.border = '1px solid red';
+            phone.focus();
+            return true;
+        }
+        if(user.username==userArray[i].username){
+            document.getElementById('usernameerror').style.display = 'block';
+            document.getElementById('usernameerror').innerHTML = 'Tên đăng nhập đã tồn tại';
+            document.getElementById('username').style.border = '1px solid red';
+            username.focus();
+            return true;
+        }
+
+    }
+    userArray.push(user);
+    localStorage.setItem('user',JSON.stringify(userArray));
+    alert('Bạn đã đăng kí thành công !');
+    showFormLogin();
+    closeFormSignUp();
+}
+
+function login(e){
+	e.preventDefault();
+	var username = document.getElementById('usernamelogin').value;
+	var password = document.getElementById('passwordlogin').value;
+	var flag=false;
+
+    // Phần kiểm tra tên đăng nhập của người dùng
+	if (username.length === 0) {
+        document.getElementById('usernameloginerror').style.display = 'block';
+        document.getElementById('usernamelogin').style.border = '1px solid red';
+
+        flag = true;
+    }
+    else {
+        document.getElementById('usernameloginerror').style.display = 'none';
+        document.getElementById('usernamelogin').style.border = '1px solid black';
+    }
+
+    // Phần kiểm tra password của người dùng
+    if (password.length === 0) {
+        document.getElementById('passloginerror').style.display = 'block';
+        document.getElementById('passwordlogin').style.border = '1px solid red';
+        flag = true;
+    }
+    else
+        if (password.length != 8) {
+            document.getElementById('passloginerror').style.display = 'block';
+            document.getElementById('passloginerror').innerHTML = 'Mật khẩu phải đủ 8 kí tự';
+document.getElementById('passwordlogin').style.border = '1px solid red';
+            flag = true;
+        }
+        else {
+            document.getElementById('passloginerror').style.display = 'none';
+            document.getElementById('passwordlogin').style.border = '1px solid black';
+        }
+	if(flag==true){
+		return false;
+	}
+	var userArray = JSON.parse(localStorage.getItem('user'));
+	for(var i=0;i<userArray.length;i++){
+		if(username==userArray[i].username && password==userArray[i].password){
+                closeFormLogin();
+				localStorage.setItem('userlogin',JSON.stringify(userArray[i]));
+                alert('Bạn đã đăng nhập thành công !');
+				window.location.reload('DoAn1.html');
+				return true;
+		}
+	}
+    document.getElementById('passloginerror').style.display = 'block';
+	document.getElementById('passloginerror').innerHTML = 'Sai thông tin đăng nhập';
+	return false;
+}
+
+function logout(url){
+	localStorage.removeItem('userlogin');
+	location.href=url;
+}
+
+function checklogin(){
+	if(localStorage.getItem('userlogin')){
+		var user = JSON.parse(localStorage.getItem('userlogin'));
+		var s='';
+		if(user.username=='admin' && user.password == '12345678'){
+			window.location.href = "Admin.html"
+		}else{
+			s = `<div >
+                    <button id = "useraccount">${user.fullname}</button>
+                </div>
+			    <div >
+                    <button onclick="logout(\'Black Phone.html\')" id = "useraccount2">Đăng xuất</button>
+                </div>
+                `;
+		}
+		document.getElementById('div-sign').innerHTML = s;
+	}
+}
  

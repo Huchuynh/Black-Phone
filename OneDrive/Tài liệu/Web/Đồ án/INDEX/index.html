@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Black Phone</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="../image/logo.png" alt="Phone">
+            <div>BLACK PHONE</div>
+        </div>
+        <div class="header-content">
+            <div class="input">
+                <input type="text" placeholder="Nhập tên điện thoại cần tìm" id="search" oninput="search1()">
+                <button onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="info">
+                <ul>
+                    <li class="li" onclick="currentSlide(1)">
+                        <span>Trang chủ</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(2)">
+                        <span>Sản phẩm</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(3)">
+                        <span>Đơn hàng</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(4)">
+                        <span>Liên Hệ</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-button">
+            <div class="div-sign">
+                <div><button onclick="document.getElementById('signup').style.display='block'">Đăng ký</button></div>
+                <div><button onclick="document.getElementById('signin').style.display='block'">Đăng nhập</button></div>
+            </div>
+            <div class="div-cart">
+                <button onclick="document.getElementById('cart').style.display='block'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <!-- <span>Giỏ hàng</span> -->
+                </button>
+            </div>    
+        </div>
+
+        <div id="signup" class="signup">
+                <form class="signup-form">
+                    <div class="signup-form-header">
+                        <h2><strong>Đăng Ký</strong></h2>
+                        <span onclick="document.getElementById('signup').style.display='none'" class="close" id="close" >&times;</span>                   
+                    </div>
+                    <div class="signup-form-content">
+                        <div>
+                            <input type="text" placeholder="Họ tên" name="uname" required>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Tên đăng ký" name="uname" required>
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Mật khẩu" name="psw" required>
+                        </div>
+                        <div>
+                            <button type="button">Đăng Ký</button>
+                        </div>                 
+                    </div>
+                </form>
+        </div>
+
+        <div id="signin" class="signin">
+                <form class="signin-form">
+                    <div class="signin-form-header">
+                        <h2><strong> Đăng nhập</strong></h2>
+                        <span onclick="document.getElementById('signin').style.display='none'" class="close" id="close" >&times;</span>                   
+                    </div>
+                    <div class="signin-form-content">
+                        <div>
+                            <input type="text" placeholder="Tên đăng nhập" id="uname" required>
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Mật khẩu" id="psw" required>
+                        </div>
+                        <div>
+                            <button type="button" id="signin-btn">Đăng nhập</button>
+                        </div>                 
+                    </div>
+                </form>
+        </div>
+
+        <div class="shopping-cart" id="cart">
+            <div class="shopping-cart-div">
+                <div class="cart-header">
+                    <span onclick="document.getElementById('cart').style.display='none'" class="close" id="close" >&times;</span>
+                    <h2><strong>GIỎ HÀNG</strong></h2>
+                </div>
+                <div class="cart-content" id="showCart">
+                    <p>GIỎ HÀNG ĐANG RỖNG</p> 
+                </div>
+                <div class="cart-total" id="cart-total">
+                     
+                </div>
+                <div class="cart-button">
+                    <button>
+                        Thanh toán
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

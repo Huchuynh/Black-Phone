@@ -556,9 +556,11 @@ function addProduct() {
 }
 
 /*-----   DANG XUAT  ----- */
-document.getElementById("logout-btn").addEventListener("click",function() {
-    window.location.href = "Black Phone.html"
-})
+function logout(){
+	localStorage.removeItem('userlogin');
+    window.location.href="Black Phone.html";
+}
+
 
 
 
