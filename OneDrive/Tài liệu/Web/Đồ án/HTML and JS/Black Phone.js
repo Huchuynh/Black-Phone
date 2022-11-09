@@ -561,6 +561,15 @@ function showProductDetail (productid) {
 }
 
 //      GIO HANG       //
+function inCart(productid) {
+    if(cartArr == null) return false
+    for(let i=0;i<cartArr.length;i++) {
+        if(cartArr[i].id == productid) {
+            return true         
+        }
+    }
+    return false
+}
 function addToCart(productid) {
     let product = JSON.parse(localStorage.getItem('product'))
     const btnPlus = document.getElementById('plus')
@@ -585,12 +594,14 @@ function addToCart(productid) {
     quantity = countInput.value
     btnAddToCart.addEventListener("click",function() {
         for(let i = 0 ; i < product.length ; i++) {
-            if(product[i].id === productid) {
-                
+            if(product[i].id === productid && inCart(product[i].id) == false) {
                 tmpProduct = product[i]
                 tmpProduct.quantity = quantity
                 cartArr.push(tmpProduct)
             }
+            else if(product[i].id === productid && inCart(product[i].id) == true){
+                alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
+            } 
         }
         Add()
         closeProductDetail()
