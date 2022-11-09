@@ -45,7 +45,6 @@ img {
     border-radius: 2px;
     height: 290px;
     max-height: 290px;
-    z-index: 7;
 }
 .category_heading {
     font-size: 20px;
@@ -68,7 +67,6 @@ img {
 .category_iteam {
     position: relative; 
     height: 50%; 
-    z-index: 7;
     position: relative;
     right: 0;
     text-decoration: none;
