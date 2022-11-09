@@ -15,7 +15,7 @@ body{
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    z-index: 2;
+    z-index: 999;
     box-shadow: 0px 0px 10px rgb(0 0 0 / 200%);
 }
 .logo{
@@ -467,9 +467,11 @@ span{
 }
 #formsignup {
     display: none;
+    font-family: 'Poppins',sans-serif;
 }
 #formlogin {
     display: none;
+    font-family: 'Poppins',sans-serif;
 }
 .auth_form__group {
     position: relative;
@@ -783,15 +785,16 @@ span{
 
 /* TIM KIEM THEO GIA */
 .home_filter {
-    background-color: #ecebec;
+    background-color: gray;
     display: flex;
     align-items: center;
     padding: 12px 22px;
-    border-radius: 2px;
+    border-radius: 50px;
+    /* border: 3px solid black; */
 }
 .home_filter_lable{
     font-size: 1.4rem;
-    color: #4b4a4c;
+    color: black;
     margin-right: 16px;
 }
 #searchextend {
@@ -1120,6 +1123,7 @@ footer {
     background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 255, 255) 0%, rgb(90, 90, 90) 15.9%, rgb(0, 0, 0) 15.9%, rgb(66, 66, 66) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
     height: 300px;
     text-align: center;
+    z-index: 7;
 }
 .footer-container {
     display: grid;

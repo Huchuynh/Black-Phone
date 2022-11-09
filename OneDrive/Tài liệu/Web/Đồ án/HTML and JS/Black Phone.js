@@ -729,9 +729,9 @@ function search2(){
 	var s='';
     function getFirstPageItems(tmpArr) {
         if(tmpArr.length > 10) {
-            for(let i=0;i<4;i++) {
+            for(let i=0;i<10;i++) {
             s += `
-                    <div class="col p-3 t-3 m-6" onclick="showProductDetail('${tmpArr[i].id}')" id="${tmpArr[i].id}">
+                    <div class="col p-2-4 t-3 m-6" onclick="showProductDetail('${tmpArr[i].id}')" id="${tmpArr[i].id}">
                         <a class="home_product_iteam" href="#" >
                             <img src="${tmpArr[i].img}" alt="" class="home_product_iteam_img">
                             <h4 class="home_product_iteam_name">
@@ -1027,7 +1027,7 @@ function createUser(e) {
     }
     else
         if (repassword.value != password.value) {
-document.getElementById('repasserror').style.display = 'block';
+            document.getElementById('repasserror').style.display = 'block';
             document.getElementById('repasserror').innerHTML = 'Mật khẩu nhập lại không đúng';
             document.getElementById('repassword').style.border = '1px solid red';
             flag = true;
