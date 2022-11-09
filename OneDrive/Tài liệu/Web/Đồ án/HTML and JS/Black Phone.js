@@ -866,22 +866,56 @@ function closeFormLogin() {
 
 
 // USER
+var x = true;
 function showPass() {
-    document.getElementById('password').type = 'text';
-    document.getElementById('eyes1').innerHTML = `<i class="fa-regular fa-eye pass_icon"></i>`
-}
-function hiddenPass() {
-    document.getElementById('password').type = 'password';
-    document.getElementById('eyesclose').style.display='block'
-    document.getElementById('eyes1').style.display='none'
+    if (x) {
+        document.getElementById('password').type = 'text';
+        document.getElementById('eyeopen').style.display = 'block';
+        document.getElementById('eyeclose').style.display = 'none';
+        x = false;
 
+    }
+    else {
+        document.getElementById('password').type = 'password';
+        document.getElementById('eyeopen').style.display = 'none';
+        document.getElementById('eyeclose').style.display = 'block';
+        x= true;
+
+    }
 }
 function showPass2() {
-    document.getElementById('repassword').type = 'text';
+    if (x) {
+        document.getElementById('repassword').type = 'text';
+        document.getElementById('eyeopen2').style.display = 'block';
+        document.getElementById('eyeclose2').style.display = 'none';
+        x = false;
+
+    }
+    else {
+        document.getElementById('repassword').type = 'password';
+        document.getElementById('eyeopen2').style.display = 'none';
+        document.getElementById('eyeclose2').style.display = 'block';
+        x= true;
+
+    }
 }
 function showPass3() {
-    document.getElementById('passwordlogin').type = 'text';
+    if (x) {
+        document.getElementById('passwordlogin').type = 'text';
+        document.getElementById('eyeopen3').style.display = 'block';
+        document.getElementById('eyeclose3').style.display = 'none';
+        x = false;
+
+    }
+    else {
+        document.getElementById('passwordlogin').type = 'password';
+        document.getElementById('eyeopen3').style.display = 'none';
+        document.getElementById('eyeclose3').style.display = 'block';
+        x= true;
+
+    }
 }
+
 
 function createAdmin(){
 	if(localStorage.getItem('user')===null){
@@ -1088,9 +1122,9 @@ document.getElementById('passwordlogin').style.border = '1px solid red';
 	return false;
 }
 
-function logout(url){
+function logout(){
 	localStorage.removeItem('userlogin');
-	location.href=url;
+    window.location.href="Black Phone.html";
 }
 
 function checklogin(){
@@ -1100,13 +1134,34 @@ function checklogin(){
 		if(user.username=='admin' && user.password == '12345678'){
 			window.location.href = "Admin.html"
 		}else{
-			s = `<div >
+			s = /* `<div >
                     <button id = "useraccount">${user.fullname}</button>
                 </div>
 			    <div >
                     <button onclick="logout(\'Black Phone.html\')" id = "useraccount2">Đăng xuất</button>
                 </div>
-                `;
+                `; */
+                `<div class="header-account-user">
+                    <div class="header-account-icon-user">
+                        <div>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="header-account-name-user">
+                            ${user.fullname}
+                    </div>
+                    <div class="logout-user">
+                        <button id="logout-btn" onclick="logout()">
+                            <div>
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </div>
+                            <div>
+                                Đăng xuất
+                            </div>
+                        </button>              
+                    </div>
+                </div>
+                `
 		}
 		document.getElementById('div-sign').innerHTML = s;
 	}

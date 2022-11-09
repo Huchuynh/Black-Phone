@@ -39,11 +39,14 @@
                 </ul>
             </div>
         </div>
-        <div class="header-button">
-            <div class="div-sign" id="div-sign">
-                <div><button onclick="showFormSignUp()">Đăng ký</button></div>
-                <div><button onclick="showFormLogin()">Đăng nhập</button></div>
+        <div class="header-button" >
+            <div id="div-sign">
+                <div class="div-sign">
+                    <div><button onclick="showFormSignUp()">Đăng ký</button></div>
+                    <div><button onclick="showFormLogin()">Đăng nhập</button></div>
+                </div>
             </div>
+            
             <div class="div-cart">
                 <button onclick="document.getElementById('cart').style.display='block'">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -111,27 +114,28 @@
 
                     <div class="auth_form__form">
                         <div class="auth_form__group">
-                            <input id="fullname" type="text" class="auth_form__input" placeholder="Nhập họ tên">
                             <div id="fullnameerror">Tên không được để trống</div>
+                            <input id="fullname" type="text" class="auth_form__input" placeholder="Nhập họ tên">
                         </div>
                         <div class="auth_form__group">
-                            <input id="numberphone" type="text" class="auth_form__input" placeholder="Nhập số điện thoại">
                             <div id="phoneerror">Số điện thoại không được để trống</div>
+                            <input id="numberphone" type="text" class="auth_form__input" placeholder="Nhập số điện thoại">
                         </div>
                         <div class="auth_form__group">
-                            <input id="username" type="text" class="auth_form__input" placeholder="Nhập tên đăng nhập">
                             <div id="usernameerror">Tên đăng nhập không được để trống</div>
+                            <input id="username" type="text" class="auth_form__input" placeholder="Nhập tên đăng nhập">
                         </div>
                         <div class="auth_form__group">
-                            <input id="password" type="password" class="auth_form__input" placeholder="Nhập mật khẩu">
-                            <a onclick="showPass()" id="eyes1"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
-                            <a onclick="hiddenPass()" id="eyesclose1"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
                             <div id="passerror">Mật khẩu không được để trống</div>
+                            <input id="password" type="password" class="auth_form__input" placeholder="Nhập mật khẩu">
+                            <a onclick="showPass()" id="eyeclose"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                            <a onclick="showPass()" id="eyeopen"><i class="fa-regular fa-eye pass_icon"></i></a>
                         </div>
                         <div class="auth_form__group">
-                            <input id="repassword" type="password" class="auth_form__input" placeholder="Nhập lại mật khẩu">
-                            <a onclick="showPass2()" id="eyes2"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
                             <div id="repasserror">Mật khẩu nhập lại không được để trống</div>
+                            <input id="repassword" type="password" class="auth_form__input" placeholder="Nhập lại mật khẩu">
+                            <a onclick="showPass2()" id="eyeclose2"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                            <a onclick="showPass2()" id="eyeopen2"><i class="fa-regular fa-eye pass_icon"></i></a>
                         </div>
                     </div>
 
@@ -159,13 +163,14 @@
     
                         <div class="auth_form__form">
                             <div class="auth_form__group">
-                                <input id="usernamelogin" type="text" class="auth_form__input" placeholder="Nhập tên đăng nhập">
                                 <div id="usernameloginerror">Tên đăng nhập không được để trống</div>
+                                <input id="usernamelogin" type="text" class="auth_form__input" placeholder="Nhập tên đăng nhập">
                             </div>
                             <div class="auth_form__group">
-                                <input id="passwordlogin" type="password" class="auth_form__input" placeholder="Nhập mật khẩu">
-                                <a onclick="showPass3()"><i class="fa-solid fa-eye  pass_icon"></i></a>
                                 <div id="passloginerror">Mật khẩu không được để trống</div>
+                                <input id="passwordlogin" type="password" class="auth_form__input" placeholder="Nhập mật khẩu">
+                                <a onclick="showPass3()" id="eyeclose3"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                                <a onclick="showPass3()" id="eyeopen3"><i class="fa-regular fa-eye pass_icon"></i></a>
                             </div>
                         </div>
     

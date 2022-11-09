@@ -116,18 +116,20 @@ body{
 }
 .div-sign{
     display: flex;
-    height: 70px;
-    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    min-height: 60px;
 }
 .div-sign div{
-    width: 50%;
-    padding: 15px 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px ;
 }
 .div-sign button{
     border-radius: 20px;
     height: 100%;
     width: 100%;
-    font-size: medium;
+    font-size: 20px;
     margin: unset;
 }
 .div-sign button:hover {
@@ -136,11 +138,82 @@ body{
     border: 3px solid whitesmoke;
     transition:0.5s;
 }
-.div-cart{
+#div-sign {
+    width: 100%;
+}
+.header-account-user {
+    display: flex;
+    height: 60px;
+    padding: 5px;
+    justify-content: center;
+}
+.header-account-user .header-account-icon-user div {
+    background-color: white;
+    height: 100%;
+    width: 50px;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    padding-right: unset;
+    border: 3px solid black;
+    border-right: unset;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+.header-account-user .header-account-name-user {
+    font-family: 'Poppins',sans-serif;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    background-color: white;
+    border: 3px solid black;
+    border-left: unset;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    padding:10px;
+    padding-left: unset;
+}
+.header-account-user:hover .logout-user {
+    display: block;
+}
+.header-account-user .logout-user {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    padding: 0px 15px;
+}
+.header-account-user .logout-user button {
+    width: 100%;
+    border-radius: 50px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    border: unset;
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+}
+.header-account-user .logout-user button div:nth-child(1) {
+    width: 20%;
+    font-size: 25px;
+    padding: 10px;
+}
+.header-account-user .logout-user button div:nth-child(2) {
+    width: 70%;
+    font-size: 25px;
+    padding: 4px 8px 15px 0px;
+    text-align: center;
+}
+
+
+
+.div-cart{
+    height: 100%;
     width: 100%;
     padding: 0px 120px;
     margin-bottom: 5px;
+    max-height: 40px;
 }
 .div-cart button{
     height: 50px;
@@ -447,7 +520,7 @@ span{
 #useraccount {
     width: 140px;
 }
-#eyesclose {
+#eyeopen,#eyeopen2,#eyeopen3 {
     display: none;
 }
 .modal {
