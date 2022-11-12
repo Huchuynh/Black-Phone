@@ -129,7 +129,7 @@
                                     </div>
                                     <div class="addProduct-form-content">
                                         <div>
-                                            <p>ID: </p>
+                                            <p>ID: </p><span id="iderror" style="display: none;color:red;"></span> 
                                             <input type="text" id="addprd-id" placeholder="ID">
                                         </div>
                                         <div>
@@ -153,7 +153,7 @@
                                             <input type="text" id="addprd-chip" placeholder="Chip">
                                         </div>
                                         <div>
-                                            <p>Hãng: </p>
+                                            <p>Hãng: </p><span id="branderror" style="display: none;color:red;"></span>
                                             <input type="text" id="addprd-brand" placeholder="Hãng">
                                         </div>
                                         <div>
@@ -203,6 +203,20 @@
         KHÁCH HÀNG
     </div>
 
+    <div class="Alertbox" id="alertbox">
+        <div class="Alertbox-div">
+            <div class="Alertbox-div-header">
+                <h2><strong> Thông báo</strong></h2>
+                <span onclick="document.getElementById('alertbox').style.display='none'" class="close" id="close" >&times;</span>
+            </div>
+            <div class="Alertbox-div-content">
+                Xác nhận xóa sản phẩm ?
+            </div>
+            <div class="Alertbox-div-button">
+                <button id="alertbox-btn" type="submit">OK</button>
+            </div>
+        </div>
+    </div>
 
 </body> 
 <script src="https://kit.fontawesome.com/f26ba754df.js" crossorigin="anonymous"></script> 

@@ -30,7 +30,7 @@
                     <li class="li" onclick="currentSlide(2)">
                         <span>Sản phẩm</span>
                     </li>
-                    <li class="li" onclick="currentSlide(3)">
+                    <li class="li" onclick="showbill();currentSlide(3);">
                         <span>Đơn hàng</span>
                     </li>
                     <li class="li" onclick="currentSlide(4)">
@@ -193,32 +193,14 @@
                     <h2><strong>GIỎ HÀNG</strong></h2>
                 </div>
                 <div class="cart-content" id="showCart">
-                    <p>GIỎ HÀNG ĐANG RỖNG</p> 
-                    <!-- <div class="cart-content-detail">
-                        <div class="cart-content-img">
-                            <img src="../image/iphone11.png" alt="">
-                        </div>
-                        <div class="cart-content-info">
-                            iPhone 11
-                            <br>
-                            <br>
-                            Giá: 10.000.000
-                        </div>
-                        <div class="cart-content-quantity">
-                            <input type="number">
-                        </div>
-                        <div class="cart-content-button">
-                            <button>
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                    </div> -->
+                    <!-- <p>GIỎ HÀNG ĐANG RỖNG</p>  -->
                 </div>
-                <div class="cart-total" id="cart-total">
-                     
+                <div class="cart-total" >
+                    TỔNG TIỀN: &nbsp;
+                    <span id="cart-total"></span>
                 </div>
                 <div class="cart-button">
-                    <button>
+                    <button onclick="buy()">
                         Thanh toán
                     </button>
                 </div>
@@ -298,50 +280,14 @@
         </div>
         <!-- Phần chi tiết sản phẩm -->
         <div class="product-detail" id="product-detail">
-             <!-- <div class="product-detail-div">
-                <div class="pd-img">
-                    <img src="../image/iphone14.webp" alt="">
-                </div>
-                <div class="pd-main">
-                    <div class="info">
-                        <div>
-                            <h2>IPHONE 14 PROMAX</h2>
-                        <p>
-                            Màn hình: 6.7 inch
-                            <br>
-                            <br>
-                            Camera: 48.0 MP + 12.0 MP
-                            <br>
-                            <br>
-                            Bộ nhớ: 128 GB
-                            <br>
-                            <br>
-                            Chip: Apple A16 Bionic
-                            <br>
-                            <br>
-                            Giá: 35.000.000
-                        </p>
-                        </div>
-                        
-                    </div>
-                        
-                    <div class="quantity">
-                        <div><button>-</button></div>
-                        <div><input type="text"></div>
-                        <div><button>+</button></div>
-                    </div>
-                    <div class="button">
-                        <button>Thêm vào giỏ hàng</button>
-                    </div>
-                </div>
-            </div> -->
+             
         </div>
     </div> 
   
 
     <!-- Đơn hàng -->
-    <div class="mySlides">
-        Đơn hàng 
+    <div class="mySlides" id="bill">
+
     </div>
 
    <!-- LIEN HE -->
