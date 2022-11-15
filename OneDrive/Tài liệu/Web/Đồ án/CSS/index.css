@@ -49,6 +49,7 @@ body{
     height: 80px;
     display: flex;
     padding: 20px 0px 20px;
+    justify-content: center;
 }
 .input input{
     width: 95%;
@@ -65,8 +66,8 @@ body{
 }
 .input button{
     width: 5%;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
     padding: unset;
     margin: unset;
     border: unset;
@@ -88,7 +89,7 @@ body{
 .info li {
     text-align: center;
     font-size: 25px;
-    width: 230.4px;
+    width: 25%;
     padding: 5px 50px;
     margin: 0px 3px;
     font-family: Arial, Helvetica, sans-serif;
@@ -120,12 +121,13 @@ body{
 }
 .div-sign{
     display: flex;
-    height: 100%;
+    height: 50%;
     width: 100%;
     min-height: 60px;
+    flex-direction: row;
 }
 .div-sign div{
-    width: 100%;
+    width: 50%;
     height: 100%;
     padding: 10px ;
 }
@@ -184,7 +186,7 @@ body{
     display: none;
     position: absolute;
     width: 20%;
-    padding: 0px 15px;
+    padding: 0px 10px;
     min-height: 50px;
 }
 .header-account-user .logout-user button {
@@ -226,6 +228,8 @@ body{
     background-color: rgb(19, 30, 37);
     border: unset;
     padding: unset;
+    font-size: 24px;
+    color: white;
 }
 .div-cart button:hover{
     background: linear-gradient(109.6deg, rgb(33, 25, 180) 11.2%, rgb(253, 29, 29) 55.2%, rgb(252, 176, 69) 91.1%);
@@ -233,13 +237,7 @@ body{
     border: 3px solid whitesmoke;
     transition:0.5s;
 }
-span{
-    color: #4a90e2;
-}
-.div-cart i{
-    font-size: 24px;
-    color: white;
-}
+
 
 
 
@@ -402,18 +400,6 @@ span{
   to {transform: scale(1)}
 } */
 
-@media only screen and (max-width:600px) {
-    /* .content-bar{
-        display: block;
-        left:0;
-    }
-    .info{
-        display: none;
-    }
-    .logo{
-        width: 80%;
-    } */
-}
 
 
 /*Dang ki dang nhap*/
@@ -731,6 +717,9 @@ span{
     padding: 15px;
     margin-top: 10px;
 }
+.cart-total span {
+    color: red;
+}
 .cart-button {
     height: 10%;
     padding: 0px 230px;
@@ -751,24 +740,7 @@ span{
     color: black;
     border: 3px solid black;
 }
-@media only screen and (max-width:600px) {
-    .shopping-cart-div, .shopping-cart-div::after {
-        height: 95%;
-        width: 95%;
-    }
-}
-@media only screen and (max-width:1500px) {
-    .cart-button {
-        padding: 0px;
-    }
-    .cart-total {
-        height: 10%;
-        font-size: 30px;
-        border-top: 3px solid black ;
-        padding: 5px;
-        margin-top: 10px;
-    }
-}
+
 /*--------------- CONTENT ---------------------*/
 
 /*      HOME PAGE      */
@@ -789,6 +761,7 @@ span{
 
 /* TIM KIEM THEO GIA */
 .home_filter {
+    font-family: 'Poppins',sans-serif;
     background-color: gray;
     display: flex;
     align-items: center;
@@ -817,6 +790,7 @@ span{
     font-size: 1.2rem;
     color: #4b4a4c;
     margin-right: 10px;
+    outline: none;
 }
 #priceto {
     height: 40px;
@@ -824,6 +798,7 @@ span{
     font-size: 1.2rem;
     color: #4b4a4c;
     margin-left: 10px;
+    outline: none;
 }
 .search_btn {
     height: 40px;
@@ -973,123 +948,7 @@ span{
   to {transform: scale(1)}
 }
 
-@media only screen and (max-width:600px) {
-    .product-detail-div {
-        background-color: #fefefe;
-        border: 1px solid #888;
-        margin: unset;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        border-radius: 50px;
-        color: white;
-        background: radial-gradient(183.46% 183.28% at 48.7% -2.53%,#000000 0%,/* #110036 */#afafaf 39.27%,#080013 49.68%,rgba(0,0,0,0) 64.44%);
-    }
-    
-    .product-detail-div img{
-        height: 100%;
-        width: 100%;
-    }
-    .pd-img {
-        width: 50%;
-        padding: 80px 20px;
-        
-    }
-    .pd-img img {
-        border-radius: 50px;
-    }
-    .pd-main{
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-    }
-    .pd-main .info {
-        height: 60%;
-        padding: 25px 25px 20px 25px;
-    }
-    .pd-main h2 {
-        text-align: center;
-        font-size: 25px;
-        padding: 0px;
-        margin-top: 10px;
-    }
-    .pd-main p {
-        font-size: 20px;
-        padding: 30px 30px;
-    }
-    .pd-main .info div {
-        border: 2px solid white;
-        border-radius: 40px;
-    }
-    .pd-main .quantity{
-        display: flex;
-        flex-direction: row;
-        padding: 21.5px 0px;
-        height: 20%;
-    }
-    .pd-main .quantity div:nth-child(1) , .pd-main .quantity div:nth-child(3) {
-        width: 25%;
-        margin: 5px;
-        padding: unset;
-        text-align: center;
-    }
-    .pd-main .quantity div:nth-child(2) {
-        width: 50%;
-        padding-top: 20px ;
-    }
-    .pd-main .quantity button {
-        height: 100%;
-        width: 50px;
-        border-radius: 50%;
-        font-size: 30px;
-        border: 3px solid black;
-    }
-    .pd-main .quantity button:hover {
-        background: linear-gradient(109.6deg, rgb(33, 25, 180) 11.2%, rgb(253, 29, 29) 55.2%, rgb(252, 176, 69) 91.1%);
-        color: white;
-        transition:0.5s;
-        border: 3px solid white;
-    }
-    .pd-main .quantity input {
-        width: 100%;
-        height: 30px;
-        font-size: 30px;
-        text-align: center;
-    }
-    .pd-main .button {
-        height: 20%;
-        width: 100%;
-        padding: 0px 50px;
-    }
-    .pd-main .button button {
-        height: 50px;
-        border-radius: 50px;
-        border: 3px solid black;
-        font-size: large;
-        width: 100%;
-    }
-    .pd-main .button button:hover {
-        background: linear-gradient(109.6deg, rgb(33, 25, 180) 11.2%, rgb(253, 29, 29) 55.2%, rgb(252, 176, 69) 91.1%);
-        color: white;
-        transition:0.5s;
-        border: 3px solid white;
-    }
-    .product-detail-div{
-        -webkit-animation: animatezoom 0.6s;
-        animation: animatezoom 0.6s
-    }
-    
-    @-webkit-keyframes animatezoom {
-      from {-webkit-transform: scale(0)} 
-      to {-webkit-transform: scale(1)}
-    }
-      
-    @keyframes animatezoom {
-      from {transform: scale(0)} 
-      to {transform: scale(1)}
-    }
-}
+
 
 /* PAGE */
 #page {
@@ -1171,6 +1030,7 @@ footer {
     flex-direction: row;
     justify-content: center;
     padding: 30px 0px;
+    margin-left: 10px ;
 }
 .header-account .header-account-icon {
     width: 20%;
@@ -1201,9 +1061,9 @@ footer {
 .header-account .logout {
     display: none;
     position: absolute;
-    height: 100%;
     width: 20%;
     padding: 0px 15px;
+    min-height: 62px;
 }
 .header-account .logout button {
     width: 100%;
@@ -1298,7 +1158,7 @@ footer {
     border-radius: unset;
     padding: 10px 0px;
 } */
-.product-fix-form-content div input , .addProduct-form-content div input {
+.product-fix-form-content div input ,.product-fix-form-content div select, .addProduct-form-content div input , .addProduct-form-content div select {
     height: 100%;
     width: 100%;
     font-size: 20px;
@@ -1308,8 +1168,9 @@ footer {
     border: unset;
     background-color: rgba(255,255,255,.3);
     transition: background .5s;
+    outline: none;
 }
-.product-fix-form-content div input:focus , .addProduct-form-content div input:focus {
+.product-fix-form-content div input:focus ,.product-fix-form-content div select:focus, .addProduct-form-content div input:focus , .addProduct-form-content div select:focus {
     background-color: white;
     outline: none;
 }
@@ -1506,4 +1367,228 @@ footer {
     background: white;
     color: black;
     border: 3px solid black;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width:600px) {
+    /* HEADER */
+    .logo {
+        padding: 10px 0px;
+        margin-left: 5px;
+    }
+    .logo img{
+        height: 90px;
+        width: 90px;
+    }
+    .logo div {
+        display: none;
+    }
+    .header-content {
+        width: 65%;
+    }
+    .input input {
+        width: 90%;
+    }
+    .input button {
+        width: 10%;
+    }
+    .info li {
+       padding: 5px 0px;
+       border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }  
+    .info span{
+        font-size: 15px;
+    }
+    .info li:hover , .active{
+        border: 2px solid white;
+        border-bottom: 0;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    .header-button {
+        width: 15%;
+        margin-left:5px ;
+        height: 100%;
+    }
+    .div-sign {
+        flex-direction: column;
+        height: 50%;
+        justify-content: center;
+    }
+    .div-sign div {
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+    }
+    .div-sign button {
+        height: 26px;
+        font-size: 13px;
+    }
+    .div-sign button:hover {
+        border: 2px solid whitesmoke;
+    }
+    .div-cart {
+        height: 50%;
+        padding: 5px 20px;
+    }
+    .div-cart button {
+        height: 45px;
+        width: 45px;
+        font-size: 18px;
+    }
+    .div-cart button:hover{
+        border: 2px solid whitesmoke;
+    }
+    .header-account-user {
+        padding: 5px 0px;
+    }
+    .header-account-user .header-account-icon-user div {
+        border-radius: 50%;
+        padding: 10px;
+        border: 2px solid black;
+        height: 45px;
+        width: 45px;
+        font-size: 20px;
+    }
+    .header-account-user .header-account-name-user {
+        display: none;
+    }
+    .header-account-user .logout-user {
+        padding: 0px 35px;
+    }
+    .header-account-user .logout-user button {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+    .header-account-user .logout-user button div:nth-child(1) {
+        width: 100%;
+        font-size: 20px;
+    }
+    .header-account-user .logout-user button div:nth-child(2) {
+        display: none;
+    }
+    /*-- ADMIN --*/
+    .header-account {
+        padding: 33px 30px;
+    }
+    .header-account .header-account-name {
+        display: none;
+    }
+    .header-account .header-account-icon {
+        width: 100%;
+    }
+    .header-account .logout {
+        padding: 0px 30px ;
+    }
+    .header-account .logout button {
+        height: 54px;
+        width: 54px;
+    }
+    .header-account .header-account-icon div {
+        border-radius: 50%;
+        font-size: 25px;
+    }
+    .header-account .logout button div:nth-child(1) {
+        width: 100%;
+        font-size: 25px;
+    }
+    .header-account .logout button div:nth-child(2) {
+        display: none;
+    }
+    /* SAN PHAM */
+    .product-detail-div {
+        width: 95%;
+        height: 80%;
+    }
+    
+    .product-detail-div img{
+        height: 100%;
+        width: 100%;
+    }
+    .pd-img {
+        width: 50%;
+        padding: 100px 20px;
+    }
+    .pd-img img {
+        border-radius: 50px;
+        height: 280px;
+        width: 250px;
+    }
+    .pd-main{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    .pd-main .info {
+        height: 60%;
+        padding: 15px;
+    }
+    .pd-main p {
+        font-size: 20px;
+        padding: 15px;
+    }
+    .pd-main .info div {
+        border: 2px solid white;
+        border-radius: 40px;
+    }
+    .pd-main .quantity{
+        display: flex;
+        flex-direction: row;
+        padding: 21.5px 0px;
+        height: 20%;
+    }
+    .pd-main .quantity div:nth-child(1) , .pd-main .quantity div:nth-child(3) {
+        width: 25%;
+        margin: 5px;
+        padding: unset;
+        text-align: center;
+    }
+    .pd-main .quantity div:nth-child(2) {
+        width: 50%;
+    }
+    .pd-main .quantity button {
+        height: 100%;
+        width: 50px;
+        border-radius: 50%;
+        font-size: 30px;
+        border: 3px solid black;
+    }
+    .pd-main .quantity input {
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        text-align: center;
+    }
+    .pd-main .button {
+        height: 20%;
+        width: 100%;
+        padding: 0px 25px;
+    }
+    .pd-main .button button {
+        height: 50px;
+        border-radius: 50px;
+        border: 3px solid black;
+        font-size: large;
+        width: 100%;
+    }
+    /* GIO HANG */
+    .shopping-cart-div, .shopping-cart-div::after {
+        height: 95%;
+        width: 95%;
+    }
+    .cart-button {
+        padding: 0px;
+    }
+    .cart-total {
+        height: 10%;
+        font-size: 30px;
+        border-top: 3px solid black ;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    
 }

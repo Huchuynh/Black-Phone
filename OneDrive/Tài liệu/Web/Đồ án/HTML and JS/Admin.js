@@ -1,4 +1,4 @@
-createProduct()
+//createProduct()
 // HOME PAGE //
 var myIndex = 0
 carousel ()
@@ -42,7 +42,7 @@ function showSlides(n) {
 function currency(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' VND';
 }
-function createProduct() {
+/* function createProduct() {
     if(localStorage.getItem('product') === null) {
         let product = [
     {   name : "Xiaomi 12T", price : "17000000", origin : "China", img : "../image/xiaomi12T.png", brand : "xiaomi",id : "x01",
@@ -196,7 +196,7 @@ function createProduct() {
         ]
         localStorage.setItem('product',JSON.stringify(product))
     }
-}
+} */
 
 // HIEN THI SAN PHAM //
 
@@ -315,8 +315,8 @@ function showProductFix (productid) {
             </div>
             <div class="product-fix-form-content">
                 <div>
-                    <p>ID: </p>
-                    <input type="text" id="prd-id" placeholder="ID" value="${product[i].id}" required>
+                    <p>ID: </p> 
+                    <input type="text" id="prd-id" placeholder="ID" value="${product[i].id}" required readonly>
                 </div>
                 <div>
                     <p>Tên sản phẩm: </p>
@@ -340,7 +340,7 @@ function showProductFix (productid) {
                 </div>
                 <div>
                     <p>Hãng: </p>
-                    <input type="text" id="prd-brand" placeholder="Hãng" value="${product[i].brand}" required>
+                    <input type="text" id="prd-brand" placeholder="Hãng" value="${product[i].brand}" readOnly>
                 </div>
                 <div>
                     <p>Xuất xứ: </p>
@@ -563,10 +563,26 @@ function checkinfoaddproduct(tmpPrd) {
     return flag
 }
 addProduct()
-function addProduct() {
+function setId_addProduct() {
     let product = JSON.parse(localStorage.getItem('product'))
-        document.getElementById("add-product-btn").addEventListener("click", function () {
+    let brand = document.getElementById("addprd-brand").value
+    let arrId = []
+    let id_num
+    for(let i = 0 ; i < product.length ; i++) {
+        if(product[i].brand == brand) {
+            id_num = parseInt((product[i].id).slice(1))
+            arrId.push(id_num)
+        }
+    }
+    let tmp = Math.max(...arrId) + 1
+    document.getElementById("addprd-id").value = brand[0] + tmp
+}
+function addProduct() {
+    let product = JSON.parse(localStorage.getItem('product')) 
+    setId_addProduct()
+    document.getElementById("add-product-btn").addEventListener("click", function () {
         let id = document.getElementById("addprd-id").value
+        console.log(id)
         let name = document.getElementById("addprd-name").value
         let screen = document.getElementById("addprd-screen").value
         let camera = document.getElementById("addprd-camera").value
@@ -578,6 +594,7 @@ function addProduct() {
         let s= document.getElementById("addprd-img").value
         let s1 = s.split("\\")
         let img = "../image/" + s1[2]
+
 
         let tmpPrd = {name,price,origin,img,brand,id,
                      info : {screen,camera,storage,chip}}

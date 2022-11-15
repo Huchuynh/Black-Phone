@@ -129,8 +129,8 @@
                                     </div>
                                     <div class="addProduct-form-content">
                                         <div>
-                                            <p>ID: </p><span id="iderror" style="display: none;color:red;"></span> 
-                                            <input type="text" id="addprd-id" placeholder="ID">
+                                            <p>ID: </p>
+                                            <input type="text" id="addprd-id" placeholder="ID" readonly>
                                         </div>
                                         <div>
                                             <p>Tên sản phẩm: </p>
@@ -154,7 +154,12 @@
                                         </div>
                                         <div>
                                             <p>Hãng: </p><span id="branderror" style="display: none;color:red;"></span>
-                                            <input type="text" id="addprd-brand" placeholder="Hãng">
+                                            <select id="addprd-brand" onchange="setId_addProduct()">
+                                                <option value="iphone">iPhone</option>
+                                                <option value="samsung">Samsung</option>
+                                                <option value="xiaomi">Xiaomi</option>
+                                                <option value="vivo">Vivo</option>
+                                            </select>
                                         </div>
                                         <div>
                                             <p>Xuất xứ: </p>
