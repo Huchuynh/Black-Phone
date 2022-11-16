@@ -672,6 +672,7 @@ function buy(){
 	localStorage.removeItem('cart');
     document.getElementById('cart').style.display = 'none';
 	showCartTable();
+    alert("THANH TOÁN THÀNH CÔNG !")
 }
 function showbill(){
     if(localStorage.getItem('userlogin')===null) {
@@ -974,7 +975,7 @@ document.getElementById('passwordlogin').style.border = '1px solid red';
                 closeFormLogin();
 				localStorage.setItem('userlogin',JSON.stringify(userArray[i]));
                 alert('Bạn đã đăng nhập thành công !');
-				window.location.reload('DoAn1.html');
+				window.location.reload('Black Phone.html');
 				return true;
 		}
 	}

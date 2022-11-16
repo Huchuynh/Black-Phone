@@ -610,8 +610,67 @@ function addProduct() {
     })
 }
 
-//BANG THONG BAO
-
+/* DANH SÁCH ĐƠN HÀNG */
+showBillList()
+function showBillList() {
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let s = ""
+    for(let i = 0 ; i < bill.length ; i++) {
+        s+= `
+            <tr onclick="showBillDetail(${bill[i].id})">
+                <td style="width: 352px;">${bill[i].id}</td>
+                <td style="width: 416.01px;">${bill[i].customer.fullname}</td>
+                <td style="width: 383.7px;">${bill[i].date}</td>
+                <td style="width: 280.49px;">${bill[i].status}</td>
+            </tr>
+        `
+    }
+    document.getElementById('bill-list-perform').innerHTML = s
+}
+function showBillDetail(billid) {
+    document.getElementById('bill-list-detail').style.display='block'
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    for(let i = 0 ; i < bill.length ; i++) {
+        if(bill[i].id == billid) {
+            document.getElementById('bill-list-detail').innerHTML =
+                `<form>
+                <div class="bill-list-detail-header">
+                    <span onclick="document.getElementById('bill-list-detail').style.display='none'" class="close" id="close" >&times;</span>
+                    <h2>Thông tin đơn hàng</h2>
+                </div>
+                <div class="bill-list-detail-content">
+                    <div>
+                        <span>Mã đơn hàng:</span>  ${bill[i].id}
+                    </div>
+                    <div>
+                        <span>Tên khách hàng:</span>  ${bill[i].customer.fullname}
+                    </div>
+                    <div>
+                        <span>Số điện thoại:</span>  ${bill[i].customer.phone}
+                    </div>
+                    <div>
+                        <span>Ngày xuất đơn:</span>  ${bill[i].date}
+                    </div>
+                    <div>
+                        <span>Sản phẩm:</span>  ${bill[i].info}
+                    </div>
+                    <div>
+                        <span>Thành tiền:</span> ${currency(bill[i].totalprice)}
+                    </div>
+                    <div>
+                        <span>Tình trạng:</span> 
+                        &nbsp;&nbsp;&nbsp;
+                        <p>${bill[i].status}</p>  
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </form>`
+        }
+    }
+}
 /*-----   DANG XUAT  ----- */
 function logout(){
 	localStorage.removeItem('userlogin');
