@@ -416,15 +416,16 @@ function addToCart(productid) {
                     tmpProduct.quantity = quantity
                     tmpProduct.totalPrice = tmpProduct.quantity * tmpProduct.price
                     cartArr.push(tmpProduct)
+                    alert("THÊM VÀO GIỎ HÀNG THÀNH CÔNG!")
                 }
                 else if(product[i].id === productid && inCart(product[i].id) == true){
                     alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
-                } 
-            }
+                }
+                 
+            } 
             localStorage.setItem('cart',JSON.stringify(cartArr));
         } 
         showCartTable()
-        alert("THÊM VÀO GIỎ HÀNG THÀNH CÔNG!")
         closeProductDetail()
     })  
 }
@@ -506,22 +507,6 @@ function search1(){
 		for(var i = 0; i < arrProduct.length; i++){
 			if ((arrProduct[i].name.toLowerCase().search(productsearch) != -1 || arrProduct[i].brand.toLowerCase().search(productsearch) != -1) && productsearch != '') {
 				tmpArr.push(arrProduct[i])
-                /* s+=`
-                    <div class="col p-3 t-6 m-12" onclick="showProductDetail('${arrProduct[i].id}')" id="${arrProduct[i].id}">
-                        <a class="home_product_iteam" href="#">
-                            <img src="${arrProduct[i].img}" alt="" class="home_product_iteam_img">
-                            <h4 class="home_product_iteam_name">
-                                ${arrProduct[i].name}
-                            </h4>
-                            <div class="home_product_iteam_price">
-                                <span class="home_product_price_curent">${currency(arrProduct[i].price)}</span>
-                            </div>
-                                            
-                            <div class="home_product_iteam_origin">
-                                <span class="home_product_iteam_origin_name">${arrProduct[i].origin}</span>
-                            </div>
-                        </a>
-                    </div>` */
 			}
 		}   
         showProduct(tmpArr)
@@ -623,15 +608,18 @@ function buy(){
         showFormLogin();
 		return false;
 	}
-	var info = '';
+	let info = [];
+    let prd
 	var totalprice = 0;
 	if(localStorage.getItem('cart')===null || localStorage.getItem('cart')=='[]'){
 		return false;
 	}
 	var cartArray = JSON.parse(localStorage.getItem('cart'));
 	for (var i = 0; i < cartArray.length; i++) {
-			info+=cartArray[i].quantity+' x '+cartArray[i].name+"<br>";
+			/* info+=cartArray[i].quantity+' x '+cartArray[i].name+"<br>"; */
 			totalprice+=cartArray[i].quantity*cartArray[i].price;
+            prd = {id: cartArray[i].id , name: cartArray[i].name ,quantity:cartArray[i].quantity, price: cartArray[i].price}
+            info.push(prd);
 	}
 	var customer = JSON.parse(localStorage.getItem('userlogin'));
 	var date = new Date();
@@ -639,13 +627,13 @@ function buy(){
 	if(localStorage.getItem('bill')===null){
 		var billArray = [];
 		var bill = {id: billArray.length, info: info, totalprice: totalprice, customer: customer, date: d, status: 'Chưa xử lý'};
-		billArray.unshift(bill);
+		billArray.push(bill);
 		localStorage.setItem('bill', JSON.stringify(billArray));
 	}
 	else{
 		var billArray = JSON.parse(localStorage.getItem('bill'));
 		var bill = {id: billArray.length, info: info, totalprice: totalprice, customer: customer, date: d, status: 'Chưa xử lý'};
-		billArray.unshift(bill);
+		billArray.push(bill);
 		localStorage.setItem('bill', JSON.stringify(billArray));
 	}	
 	localStorage.removeItem('cart');
@@ -716,7 +704,7 @@ function deleteBill(billid) {
                 showbill();
             }
             else 
-                alert("ĐƠN HÀNG ĐÃ ĐƯỢC XỬ LÝ!")
+                alert("KHÔNG THỂ XÓA ĐƠN HÀNG ĐÃ ĐƯỢC XỬ LÝ!")
         }
         else {
             

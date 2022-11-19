@@ -636,6 +636,23 @@ function showBillList() {
     }
     document.getElementById('bill-list-perform').innerHTML = s
 }
+function showtableinbill(billid) {
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let s= ''
+    for(let i = 0 ; i < bill.length ; i++) {
+        if(bill[i].id == billid)
+        for(let j = 0 ; j < bill[i].info.length ; j++)
+            s+=`
+                <tr>
+                    <td style="width: 12.5%;">${bill[i].info[j].id}</td>
+                    <td style="width: 25%;">${bill[i].info[j].name}</td>
+                    <td style="width: 12.5%;">${bill[i].info[j].quantity}</td>
+                    <td style="width: 25%;">${currency(bill[i].info[j].price) }</td>
+                    <td style="width: 25%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
+                </tr>  `
+    }
+    return s 
+}
 function showBillDetail(billid) {
     document.getElementById('bill-list-detail').style.display='block'
     let bill = JSON.parse(localStorage.getItem('bill'))
@@ -648,32 +665,48 @@ function showBillDetail(billid) {
                     <h2>Thông tin đơn hàng</h2>
                 </div>
                 <div class="bill-list-detail-content">
-                    <div>
-                        <span>Mã đơn hàng:</span>  ${bill[i].id}
+                    <div class="bill-list-detail-content-1">
+                        <div>
+                            <span>Mã đơn hàng:</span>  ${bill[i].id}
+                        </div>
+                        <div>
+                            <span>Tên khách hàng:</span>  ${bill[i].customer.fullname}
+                        </div>
+                        <div>
+                            <span>Số điện thoại:</span> ${bill[i].customer.phone}
+                        </div>
+                        <div>
+                            <span>Ngày xuất đơn:</span>  ${bill[i].date}
+                        </div>
                     </div>
-                    <div>
-                        <span>Tên khách hàng:</span>  ${bill[i].customer.fullname}
+                    
+                    <div class="bill-list-detail-content-2">
+                        <table>
+                            <tr>
+                                <th style="width: 12.5%;">Mã sản phẩm</th>
+                                <th style="width: 25%;">Tên sản phẩm</th>
+                                <th style="width: 12.5%;">Số lượng</th>
+                                <th style="width: 25%;">Đơn giá</th>
+                                <th style="width: 25%;">Thành tiền</th>
+                            </tr>
+                        </table>
+                        <table>
+                            ${showtableinbill(billid)}                                                 
+                        </table>
                     </div>
-                    <div>
-                        <span>Số điện thoại:</span>  ${bill[i].customer.phone}
-                    </div>
-                    <div>
-                        <span>Ngày xuất đơn:</span>  ${bill[i].date}
-                    </div>
-                    <div>
-                        <span>Sản phẩm:</span>  ${bill[i].info}
-                    </div>
-                    <div>
-                        <span>Thành tiền:</span> ${currency(bill[i].totalprice)}
-                    </div>
-                    <div>
-                        <span>Tình trạng:</span> 
-                        &nbsp;&nbsp;&nbsp;
-                        <p id="status">${bill[i].status}</p>  
-                        <label class="switch">
-                            <input type="checkbox" id="switch-el" onchange="setBillStatus(${bill[i].id})" >
-                            <span class="slider round"></span>
-                        </label>
+                    <div class="bill-list-detail-content-3">
+                        <div>
+                            <span>Tổng cộng:</span> ${currency(bill[i].totalprice) }
+                        </div> 
+                        <div>
+                             <label class="switch">
+                                <input type="checkbox" id="switch-el"  onchange="setBillStatus(${billid})">
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;
+                            <p id="status">Chưa xử lý</p>  
+                            <span>Tình trạng:</span>
+                        </div>
                     </div>
                 </div>
             </form>`
