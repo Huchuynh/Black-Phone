@@ -627,10 +627,10 @@ function showBillList() {
     for(let i = 0 ; i < bill.length ; i++) {
         s+= `
             <tr onclick="showBillDetail(${bill[i].id})">
-                <td style="width: 352px;">${bill[i].id}</td>
-                <td style="width: 416.01px;">${bill[i].customer.fullname}</td>
-                <td style="width: 383.7px;">${bill[i].date}</td>
-                <td style="width: 280.49px;">${bill[i].status}</td>
+                <td style="width: 25%;">${bill[i].id}</td>
+                <td style="width: 25%;">${bill[i].customer.fullname}</td>
+                <td style="width: 25%;">${bill[i].date}</td>
+                <td style="width: 25%;">${bill[i].status}</td>
             </tr>
         `
     }
@@ -689,9 +689,7 @@ function showBillDetail(billid) {
                                 <th style="width: 25%;">Đơn giá</th>
                                 <th style="width: 25%;">Thành tiền</th>
                             </tr>
-                        </table>
-                        <table>
-                            ${showtableinbill(billid)}                                                 
+                            ${showtableinbill(billid)}
                         </table>
                     </div>
                     <div class="bill-list-detail-content-3">
@@ -704,7 +702,7 @@ function showBillDetail(billid) {
                                 <span class="slider round"></span>
                             </label>
                             &nbsp;&nbsp;&nbsp;
-                            <p id="status">Chưa xử lý</p>  
+                            <p id="status">${bill[i].status}</p>  
                             <span>Tình trạng:</span>
                         </div>
                     </div>
@@ -712,11 +710,11 @@ function showBillDetail(billid) {
             </form>`
             let switchEl = document.getElementById('switch-el')
             if(bill[i].status == "Chưa xử lý") {
-                switchEl.checked == false
+                switchEl.checked = false
                 document.getElementById("status").style.color = "red"
             }
             else {
-                switchEl.checked == true
+                switchEl.checked = true
                 document.getElementById("status").style.color = "green"
             }
             break

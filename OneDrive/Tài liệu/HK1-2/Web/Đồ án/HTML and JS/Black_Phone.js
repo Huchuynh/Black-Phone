@@ -671,13 +671,17 @@ function showbill(){ // sửa 2
             '</div>';
 		for (var i = 0; i < billArray.length; i++) {
 			if(user.username==billArray[i].customer.username){
-				s += '<div class="billcontent">'+
-					'<div>'+billArray[i].info+'</div>'+
-					'<div>'+currency(billArray[i].totalprice)+'</div>'+
-					'<div>'+billArray[i].date+'</div>'+
-					'<div class="bill_status1">'+billArray[i].status+'</div>'+
-                    '<button onclick="deleteBill('+billArray[i].id+')" id = "btn_delete_bill" class="btn_trash_bill"><i class="fa-sharp fa-solid fa-trash"></i></button>'+
-				'</div>';
+               
+                    s += '<div class="billcontent" onclick="showBillDetail('+billArray[i].id +')">'+'<div>'
+                    for(let j = 0 ; j < billArray[i].info.length ; j++) {
+                        s+= billArray[i].info[j].quantity + " x " + billArray[i].info[j].name+"<br>"
+                    }
+                    s+='</div>'+
+                    '<div>'+currency(billArray[i].totalprice)+'</div>'+
+                        '<div>'+billArray[i].date+'</div>'+
+                        '<div class="bill_status1">'+billArray[i].status+'</div>'+
+                        '<button onclick="deleteBill('+billArray[i].id+')" id = "btn_delete_bill" class="btn_trash_bill"><i class="fa-sharp fa-solid fa-trash"></i></button>'+
+                    '</div>';
 			}
 		}
         if (s.length > 0)
@@ -711,6 +715,74 @@ function deleteBill(billid) {
             alert("Bạn thật là thông minh");
             return true;
         }
+}
+
+//show bill detail
+function showtableinbill(billid) {
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let s= ''
+    for(let i = 0 ; i < bill.length ; i++) {
+        if(bill[i].id == billid)
+        for(let j = 0 ; j < bill[i].info.length ; j++)
+            s+=`
+                <tr>
+                    <td style="width: 12.5%;">${bill[i].info[j].id}</td>
+                    <td style="width: 25%;">${bill[i].info[j].name}</td>
+                    <td style="width: 12.5%;">${bill[i].info[j].quantity}</td>
+                    <td style="width: 25%;">${currency(bill[i].info[j].price) }</td>
+                    <td style="width: 25%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
+                </tr>  `
+    }
+    return s 
+}
+function showBillDetail(billid) {
+    document.getElementById('bill-list-detail').style.display='block'
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    for(let i = 0 ; i < bill.length ; i++) {
+        if(bill[i].id == billid) {
+            document.getElementById('bill-list-detail').innerHTML =
+                `<form>
+                <div class="bill-list-detail-header">
+                    <span onclick="document.getElementById('bill-list-detail').style.display='none'" class="close" id="close" >&times;</span>
+                    <h2>Thông tin đơn hàng</h2>
+                </div>
+                <div class="bill-list-detail-content">
+                    <div class="bill-list-detail-content-1">
+                        <div>
+                            <span>Mã đơn hàng:</span>  ${bill[i].id}
+                        </div>
+                        <div>
+                            <span>Tên khách hàng:</span>  ${bill[i].customer.fullname}
+                        </div>
+                        <div>
+                            <span>Số điện thoại:</span> ${bill[i].customer.phone}
+                        </div>
+                        <div>
+                            <span>Ngày xuất đơn:</span>  ${bill[i].date}
+                        </div>
+                    </div>
+                    
+                    <div class="bill-list-detail-content-2">
+                        <table>
+                            <tr>
+                                <th style="width: 12.5%;">Mã sản phẩm</th>
+                                <th style="width: 25%;">Tên sản phẩm</th>
+                                <th style="width: 12.5%;">Số lượng</th>
+                                <th style="width: 25%;">Đơn giá</th>
+                                <th style="width: 25%;">Thành tiền</th>
+                            </tr>
+                            ${showtableinbill(billid)}
+                        </table>
+                    </div>
+                    <div class="bill-list-detail-content-3">
+                        <div>
+                            <span>Tổng cộng:</span>  ${currency(bill[i].totalprice)} 
+                        </div> 
+                    </div>
+                </div>
+            </form>`
+        }
+    }
 }
 
 /* LIEN HE */
