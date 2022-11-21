@@ -203,14 +203,17 @@
         <div class="bill-list-filter">
             <span>Từ ngày:</span>
             &nbsp;
-            <input type="date">
+            <input type="date" id="date-from" onchange="billFilter()">
             &nbsp;
             <span>đến</span>
             &nbsp;
-            <input type="date">
+            <input type="date" id="date-to" onchange="billFilter()">
             &nbsp;
             &nbsp;
-            <button type="button">Lọc</button>
+            <button type="button" id="bill-list-filter-btn1" onclick="billFilter()">Lọc</button>
+            &nbsp;
+            &nbsp;
+            <button type="button" id="bill-list-filter-btn2" onclick="showBillList()">Tất cả đơn hàng</button>
         </div>
         <div class="bill-list-table">
             <table>

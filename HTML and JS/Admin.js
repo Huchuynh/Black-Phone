@@ -622,6 +622,8 @@ function addProduct() {
 /* DANH SÁCH ĐƠN HÀNG */
 showBillList()
 function showBillList() {
+    document.getElementById("date-from").value = ""
+    document.getElementById("date-to").value = ""
     let bill = JSON.parse(localStorage.getItem('bill'))
     let s = ""
     for(let i = 0 ; i < bill.length ; i++) {
@@ -631,6 +633,20 @@ function showBillList() {
                 <td style="width: 25%;">${bill[i].customer.fullname}</td>
                 <td style="width: 25%;">${bill[i].date}</td>
                 <td style="width: 25%;">${bill[i].status}</td>
+            </tr>
+        `
+    }
+    document.getElementById('bill-list-perform').innerHTML = s
+}
+function showBillList1(billArr) {
+    let s = ""
+    for(let i = 0 ; i < billArr.length ; i++) {
+        s+= `
+            <tr onclick="showBillDetail(${billArr[i].id})">
+                <td style="width: 25%;">${billArr[i].id}</td>
+                <td style="width: 25%;">${billArr[i].customer.fullname}</td>
+                <td style="width: 25%;">${billArr[i].date}</td>
+                <td style="width: 25%;">${billArr[i].status}</td>
             </tr>
         `
     }
@@ -745,7 +761,47 @@ function setBillStatus(billid) {
         }
     }
     localStorage.setItem('bill',JSON.stringify(bill))
-    showBillList()
+    //showBillList()
+    billFilter()
+}
+function parseYMD(string) {
+    let date = new Date()
+    let arr = string.split("-")
+    return arr[2] + "-" + arr[1] + "-" + arr[0] 
+}
+function dateFilter(date) {
+    let d1 = document.getElementById("date-from").value
+    let d2 = document.getElementById("date-to").value
+    return date>= d1 && date<=d2
+}
+function billFilter() {
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let dates = []
+    let billArr = []
+    let d1 = document.getElementById("date-from")
+    let d2 = document.getElementById("date-to")
+    if(d1.value > d2.value && d2.value != "") {
+        alert("SAI THỨ TỰ NGÀY !") 
+        d2.focus()
+    }
+    else { 
+        for(let i = 0 ; i < bill.length ; i++) {
+            dates.push(parseYMD(bill[i].date)) 
+        }
+        let filtereddate = dates.filter(dateFilter)
+        console.log(filtereddate)
+        for(let i = 0 ; i < bill.length ; i++) {
+            for(let j = 0 ; j < filtereddate.length ; j++ ) {
+                if(parseYMD(bill[i].date) == filtereddate[j]) {
+                    billArr.push(bill[i])
+                    break
+                }
+            }
+        }
+        console.log(billArr)
+        showBillList1(billArr)
+    }
+    
 }
 /*-----   DANG XUAT  ----- */
 function logout(){

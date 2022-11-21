@@ -711,7 +711,6 @@ function deleteBill(billid) {
                 alert("KHÔNG THỂ XÓA ĐƠN HÀNG ĐÃ ĐƯỢC XỬ LÝ!")
         }
         else {
-            
             alert("Bạn thật là thông minh");
             return true;
         }
@@ -784,6 +783,8 @@ function showBillDetail(billid) {
         }
     }
 }
+
+
 
 /* LIEN HE */
 document.querySelector('#contact-form').addEventListener('submit', (e) => {

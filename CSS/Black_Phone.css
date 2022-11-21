@@ -1730,7 +1730,7 @@ background-color: white;
 }
 .bill-list-table {
     height: 90%;
-    padding: 20px;
+    padding: 25px;
 }
 .bill-list-table table {
     font-family: Arial, Helvetica, sans-serif;
@@ -1924,17 +1924,20 @@ input:checked + .slider:before {
 .bill-list-filter {
     font-family: 'Poppins',sans-serif;
     height: 70px;
-    padding: 15px 400px;
+    padding: 25px 220px 0px;
     font-size: 25px;
 }
 .bill-list-filter input {
-    height: 35px;
-    width: 150px;
+    height: 40px;
+    width: 160px;
     font-size: 20px;
+    border-radius: 50px;
+    border: 3px solid black;
+    padding: 7px;
 }
 .bill-list-filter button {
     height: 40px;
-    width: 100px;
+    width: 200px;
     font-size: 20px;
     background-color: black;
     color: white;
