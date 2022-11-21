@@ -1,0 +1,363 @@
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Huchuynh">
+    <link rel="stylesheet" href="../CSS/Black_Phone.css">
+    <link rel="stylesheet" href="../CSS/grid.css">
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="../image/logo.png">
+    <title>Black Phone</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="../image/logo.png" alt="Phone">
+            <div>BLACK PHONE</div>
+        </div>
+        <div class="header-content">
+            <div class="input">
+                <input type="text" placeholder="Nhập tên điện thoại cần tìm" id="search" oninput="search1()">
+                <button onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="info info_mobie">
+                <ul>
+                    <li class="li" onclick="currentSlide(1)">
+                        <span>Trang chủ</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(2)">
+                        <span>Sản phẩm</span>
+                    </li>
+                    <li class="li" onclick="showbill();currentSlide(3);">
+                        <span>Đơn hàng</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(4)">
+                        <span>Liên Hệ</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-button" >
+            <div id="div-sign">
+                <div class="div-sign">
+                    <div><button onclick="showFormSignUp()">Đăng ký</button></div>
+                    <div><button onclick="showFormLogin()">Đăng nhập</button></div>
+                </div>
+            </div>
+            
+            <div class="div-cart">
+                <button onclick="document.getElementById('cart').style.display='block'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <!-- <span>Giỏ hàng</span> -->
+                </button>
+            </div>    
+        </div>
+
+        <!-- Form đăng kí, đăng nhập -->
+        <form id="formsignup">
+            <div class="modal">
+                <div class="modal_overlay"></div>
+
+                <div class="modal_body">
+                        <!-- Authen form -->
+                    <div class="auth_form">
+                        <div class="auth_form__container">
+                            <div class="auth_form_header">
+                                <h3 class="auth_form__heading">Đăng kí</h3>
+                                <a class="auth_form__switch_btn" onclick="showFormLogin(),closeFormSignUp()">Đăng nhập</a>
+                            </div>
+
+                            <div class="auth_form__form">
+                                <div class="auth_form__group">                                    
+                                    <input id="fullname" type="text" class="auth_form__input" placeholder="Nhập họ tên">
+                                    <div id="fullnameerror">Tên không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                   
+                                    <input id="numberphone" type="text" class="auth_form__input" placeholder="Nhập số điện thoại">
+                                    <div id="phoneerror">Số điện thoại không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                 
+                                    <input id="username" type="text" class="auth_form__input" placeholder="Nhập tên đăng nhập">
+                                    <div id="usernameerror">Tên đăng nhập không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                    
+                                    <input id="password" type="password" class="auth_form__input" placeholder="Nhập mật khẩu">
+                                    <a onclick="showPass()" id="eyeclose"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                                    <a onclick="showPass()" id="eyeopen"><i class="fa-regular fa-eye pass_icon"></i></a>
+                                    <div id="passerror">Mật khẩu không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                   
+                                    <input id="repassword" type="password" class="auth_form__input" placeholder="Nhập lại mật khẩu">
+                                    <a onclick="showPass2()" id="eyeclose2"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                                    <a onclick="showPass2()" id="eyeopen2"><i class="fa-regular fa-eye pass_icon"></i></a>
+                                    <div id="repasserror">Mật khẩu nhập lại không được để trống</div>
+                                </div>
+                            </div>
+
+                            <div class="auth_form__controls">
+                                <button type="button" class="btn btn_nomal auth_form__control_back" onclick="closeFormSignUp()">THOÁT</button>
+                                <button type="submit" class="btn btn__primary">ĐĂNG KÍ</button>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form id="formlogin">
+            <div class="modal">
+                <div class="modal_overlay"></div>
+
+                <div class="modal_body">
+                        <div class="auth_form">
+                            <div class="auth_form__container">
+                                <div class="auth_form_header">
+                                    <h3 class="auth_form__heading">Đăng nhập</h3>
+                                    <a class="auth_form__switch_btn" onclick="showFormSignUp(),closeFormLogin()">Đăng kí</a>
+                                </div>
+            
+                                <div class="auth_form__form">
+                                    <div class="auth_form__group">                                       
+                                        <input id="usernamelogin" type="text" class="auth_form__input" placeholder="Nhập tên đăng nhập">
+                                        <div id="usernameloginerror">Tên đăng nhập không được để trống</div>
+                                    </div>
+                                    <div class="auth_form__group">                                       
+                                        <input id="passwordlogin" type="password" class="auth_form__input" placeholder="Nhập mật khẩu">
+                                        <a onclick="showPass3()" id="eyeclose3"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                                        <a onclick="showPass3()" id="eyeopen3"><i class="fa-regular fa-eye pass_icon"></i></a>
+                                        <div id="passloginerror">Mật khẩu không được để trống</div>
+                                    </div>
+                                </div>
+            
+                                <div class="auth_form__controls">
+                                    <button type="button" class="btn btn_nomal auth_form__control_back" onclick="closeFormLogin()">THOÁT</button>
+                                    <button type="submit" class="btn btn__primary">ĐĂNG NHẬP</button>
+                                </div>    
+                            </div>
+            
+                        </div>
+
+                </div>
+            </div>
+        </form>
+
+        <div class="shopping-cart" id="cart">
+            <div class="shopping-cart-div">
+                <div class="cart-header">
+                    <span onclick="document.getElementById('cart').style.display='none'" class="close" id="close" >&times;</span>
+                    <h2><strong>GIỎ HÀNG</strong></h2>
+                </div>
+                <div class="cart-content" id="showCart">
+                    <!-- <p>GIỎ HÀNG ĐANG RỖNG</p>  -->
+                </div>
+                <div class="cart-total" >
+                    TỔNG TIỀN: &nbsp;
+                    <span id="cart-total"></span>
+                </div>
+                <div class="cart-button">
+                    <button onclick="buy()">
+                        Thanh toán
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="home-page mySlides">
+        <div class="slider-ads">
+            <img class="ads" src="../image/QC1.webp" alt="">
+            <img class="ads" src="../image/QC2.webp" alt="">
+            <img class="ads" src="../image/QC3.webp" alt="">
+            <img class="ads" src="../image/QC4.webp" alt="">
+            <img class="ads" src="../image/QC5.webp" alt="">
+        </div>
+    </div>
+
+    <div class="container mySlides" >
+        <div class="grid wide content">
+            <div class="row">
+                <div class="col p-2 t-0 m-0">
+                    <div class="category">
+                       <ul class="category_list">
+                            <li class="category_iteam" id="Ip-category"> 
+                                <div>
+                                    <img src="../image/logo-iphone.png" alt="">
+                                </div>                         
+                            </li>
+                            <li class="category_iteam" id="Samsung-category">
+                                <div class="brand-category">
+                                    <img src="../image/logo-samsung.png" alt="">
+                                </div>                                                         
+                            </li>
+                            <li class="category_iteam" id="Xiaomi-category">
+                                <div class="brand-category">
+                                    <img src="../image/logo-xiaomi.png" alt=""> 
+                                </div>                                                     
+                            </li>
+                            <li class="category_iteam" id="Vivo-category">
+                                <div class="brand-category">
+                                    <img src="../image/logo-vivo.png" alt="">
+                                </div>                       
+                            </li>
+                       </ul> 
+                    </div>
+                </div>
+                <div class="col p-10 t-12 m-12">
+                    <div class="home_filter">
+                        <span class="home_filter_lable">Tìm kiếm theo giá</span>
+                        <div id="searchextend" class="">
+                            <div>
+                                <select id="brandsearch" onchange="search2()">
+                                    <option value="all" >Tất cả</option>
+                                    <option value="iphone">iPhone</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="xiaomi">Xiaomi</option>
+                                    <option value="vivo">Vivo</option>
+                                </select>
+                            </div>
+                            <div> 
+                                <input type="text" id="priceform"  placeholder="Giá từ" oninput="search2()"> &mdash;
+                                <input type="text" id="priceto" placeholder="Đến" oninput="search2()">
+                                <button class="search_btn" onclick="search2()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home_product">
+                        <div class="row" id="product-perform">
+                            <!-- HIEN THI SAN PHAM -->
+                        </div>
+                    </div>
+                    <div id="page">
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Phần chi tiết sản phẩm -->
+        <div class="product-detail" id="product-detail">
+             
+        </div>
+    </div> 
+  
+
+    <!-- Đơn hàng -->
+    <div class="mySlides" id="bill">
+
+          
+    </div>
+    <div class="bill-list-detail" id="bill-list-detail" >
+                <!-- CHI TIẾT ĐƠN HÀNG -->
+    </div> 
+   <!-- LIEN HE -->
+    <section id="contact" class="mySlides">
+  
+            <h1 class="section-header">Liên Hệ</h1>
+            
+            <div class="contact-wrapper">
+            
+              
+              <form id="contact-form" class="form-horizontal" role="form">
+                 
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
+                  </div>
+                </div>
+          
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
+                  </div>
+                </div>
+          
+                <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+                
+                <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+                  <div class="alt-send-button">
+                    <i class="fa fa-paper-plane fa-2x"></i><span class="send-text"></span>
+                  </div>
+                
+                </button>
+                
+              </form>
+              
+              
+                <div class="direct-contact-container">
+          
+                  <ul class="contact-list">
+                    <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">273 An Dương Vương</span></i></li>
+                    
+                    <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:33333333" title="Di động">03 333 3333</a></span></i></li>
+                    
+                    <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="https://mail.google.com/" target="_blank" title="Email">blackphone@gmail.com</a></span></i></li>
+                    
+                  </ul>
+          
+                  <hr>
+                  <ul class="social-media-list">
+                    <li><a href="https://www.google.com/" target="_blank" class="contact-icon">
+                      <i class="fa fa-google fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/" target="_blank" class="contact-icon">
+                      <i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/" target="_blank" class="contact-icon">
+                      <i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                    </li>       
+                  </ul>
+                  <hr>
+          
+                  <div class="copyright">&copy; Tất cả đều được bảo mật</div>
+          
+                </div>
+              
+            </div>
+            
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-content"><span class="footer-content-header">Giới thiệu</span>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Tư vấn mua hàng</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <span class="footer-content-header">Chính sách chung</span>
+                <ul>
+                    <li><a href="#">Chính sách mua trả góp</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Chính sách giải quyết khiếu nại</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <span class="footer-content-header">Hỗ trợ khách hàng</span>
+                <ul>
+                    <li><a href="#">Thông tin thanh toán</a></li>
+                    <li><a href="#">Hotline CSKH</a></li>
+                    <li><a href="#">etc........</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <span class="footer-content-header"><h4>Chi nhánh</h4></span>
+                <ul>
+                    <li><a href="#">Hồ Chí Minh</a></li>
+                    <li><a href="#">Hà Nội</a></li>
+                    <li><a href="#">Đà Nẵng</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </footer>
+        
+
+</body> 
+<script src="https://kit.fontawesome.com/f26ba754df.js" crossorigin="anonymous"></script> 
+<script src="Black_Phone.js"></script>
+</html>
+
