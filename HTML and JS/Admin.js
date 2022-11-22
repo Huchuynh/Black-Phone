@@ -262,6 +262,7 @@ function showProduct(tmpArr) {
     renderProduct1()
     displayPanigation1()
     changePage1()
+    pageActive()
 }
 /* HIEN THI SAN PHAM THEO HANG */
 
@@ -278,27 +279,54 @@ function showProduct_classified() {
             return product.brand == "iphone"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Sscategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "samsung"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Xmcategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "xiaomi"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Vvcategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "vivo"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
 }
 
+function pageActive() {
+    let pages = document.querySelectorAll(".pagenumber")
+    pages.forEach(page => {
+        page.addEventListener('click',() => {
+            pages.forEach(page => {
+                page.classList.remove('page_active')
+            })
+            page.classList.add('page_active')
+        }) 
+    });
+}
+brand_categoryActive()
+function brand_categoryActive() {
+    let brands = document.querySelectorAll(".brand_category")
+    brands.forEach(brand => {
+        brand.addEventListener('click',() => {
+            brands.forEach(brand => {
+                brand.classList.remove('brand_category_active')
+            })
+            brand.classList.add('brand_category_active')
+        }) 
+    });
+}
 // HIEN THI CHINH SUA SAN PHAM //
 
 function showProductFix (productid) {
@@ -761,8 +789,12 @@ function setBillStatus(billid) {
         }
     }
     localStorage.setItem('bill',JSON.stringify(bill))
-    //showBillList()
-    billFilter()
+    let d1 = document.getElementById("date-from").value
+    let d2 = document.getElementById("date-to").value
+    if(d1 == "" && d2 =="")
+        showBillList()
+    else
+        billFilter()
 }
 function parseYMD(string) {
     let date = new Date()
@@ -782,6 +814,7 @@ function billFilter() {
     let d2 = document.getElementById("date-to")
     if(d1.value > d2.value && d2.value != "") {
         alert("SAI THỨ TỰ NGÀY !") 
+        d1.focus()
         d2.focus()
     }
     else { 

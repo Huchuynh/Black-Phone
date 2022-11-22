@@ -181,32 +181,49 @@ body{
     display: block;
 }
 .header-account-user .logout-user {
+    font-family: 'Poppins',sans-serif;
     display: none;
     position: absolute;
-    width: 20%;
-    padding: 0px 10px;
-    min-height: 50px;
+    top: 67px;
+    right: 2.5px;
+    width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: white;
+    border: 3px solid black;
 }
-.header-account-user .logout-user button {
+
+.header-account-user .logout-user div {
     width: 100%;
-    border-radius: 50px;
-    height: 50px;
+    height: 50%;
     display: flex;
     justify-content: center;
     border: unset;
+    color: black;
+    transition: background .3s;
+    border-radius: 100px;
+}
+.header-account-user .logout-user div:hover {
     background-color: black;
     color: white;
-    border: 3px solid white;
 }
-.header-account-user .logout-user button div:nth-child(1) {
+/* .header-account-user .logout-user div:nth-child(1) {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.header-account-user .logout-user div:nth-child(2) {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+} */
+.header-account-user .logout-user div i {
     width: 20%;
     font-size: 25px;
     padding: 10px;
 }
-.header-account-user .logout-user button div:nth-child(2) {
+.header-account-user .logout-user div span {
     width: 70%;
     font-size: 25px;
-    padding: 8px 20px 10px 0px;
+    padding: 10px 20px 10px 0px;
     text-align: center;
 }
 
@@ -775,6 +792,7 @@ body{
     padding: 12px 22px;
     border-radius: 50px;
     color: white;
+    justify-content: center;
     /* border: 3px solid black; */
 }
 .home_filter_lable{
@@ -887,7 +905,7 @@ img {
     padding: /* 12px 16px */ 50px 0px;
     transition: right linear 0.1s;
 }
-.category_iteam div{
+.brand_category{
     background-color: white;
     height: 95px;
     align-items: center;
@@ -896,15 +914,15 @@ img {
     border: 3px solid black;
     box-shadow:0px 0px 20px rgb(0 0 0 / 200%);
 }
-.category_iteam div img {
+.brand_category img {
     height: 36.65px;
     width: 168px;
 }
 
-.category_iteam div:hover {
-    border: 3px solid black;
+.brand_category:hover , .brand_category_active{
     transition:0.3s;
     border-radius: 60px;
+    border: 3px solid blue;
 }
 
 .category_iteam::before {
@@ -1160,21 +1178,27 @@ img {
     font-family: 'Poppins',sans-serif;
     width: 50px;
     height: 50px;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
     padding: 10px;
     margin: 0px 10px;
-    background-color: black;
+    /* background-color: black;
     color: white;
-    border: 3px solid black;
+    border: 3px solid black; */
     border-radius: 50px;
     transition: background .3s ;
 }
-#page div:hover {
+.pagenumber {
+    background-color: black;
+    color: white;
+    border: 3px solid black;
+}
+#page div:hover , .page_active{
     color: black;
     background-color: white;
     border: 3px solid black;
 }
+
 
 /*---------------------- FOOTER ----------------------*/
 footer {
@@ -1434,7 +1458,7 @@ footer {
 
 .addProduct{
     position: absolute;
-    right: 0;
+    right: -25;
     z-index: 1;
     height: 6%;
     width: 200px;
@@ -1458,24 +1482,13 @@ footer {
 }
 
 /*      BILL       */
-#bill {
-    min-height:500px;
-    max-height: 500px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-.billcontent{
-    border:  1px solid #000;
-    padding: 20px;
-    width: 100%;
-    margin: 20px 0;
-    border-radius: 30px;
-    display: flex;
-    flex-wrap: wrap;
-} 
+
 .billcontent div:nth-child(1){
     width: 40%;
     text-align: left;
+}
+.billcontent div:nth-child(1):hover {
+    color: blue;
 }
 .billcontent div{
     width: 20%;
@@ -1507,7 +1520,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 150px;
+    margin-left: 110px;
 }
 .bill_heading_info3 .bill_info:nth-child(1) {
     width: 20%;
@@ -1532,7 +1545,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 220px;
+    margin-left: 170px;
 }
 .bill_heading_info .bill_info:nth-child(3) {
     font-size: 1.8rem;
@@ -1544,7 +1557,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 200px;
+    margin-left: 260px;
 }
 .bill_heading_info3 .bill_info:nth-child(3) {
     font-size: 1.8rem;
@@ -1562,7 +1575,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 90px;
+    margin-left: 110px;
 }
 .bill_heading_info3 .bill_info:nth-child(4) {
     font-size: 1.8rem;

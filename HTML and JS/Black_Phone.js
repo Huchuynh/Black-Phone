@@ -264,6 +264,18 @@ function showProduct(tmpArr) {
     renderProduct1()
     displayPanigation1()
     changePage1()
+    pageActive()
+}
+function pageActive() {
+    let pages = document.querySelectorAll(".pagenumber")
+    pages.forEach(page => {
+        page.addEventListener('click',() => {
+            pages.forEach(page => {
+                page.classList.remove('page_active')
+            })
+            page.classList.add('page_active')
+        }) 
+    });
 }
 /* HIEN THI SAN PHAM THEO HANG */
 
@@ -280,27 +292,42 @@ function showProduct_classified() {
             return product.brand == "iphone"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Sscategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "samsung"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Xmcategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "xiaomi"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Vvcategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "vivo"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
 }
-
+brand_categoryActive()
+function brand_categoryActive() {
+    let brands = document.querySelectorAll(".brand_category")
+    brands.forEach(brand => {
+        brand.addEventListener('click',() => {
+            brands.forEach(brand => {
+                brand.classList.remove('brand_category_active')
+            })
+            brand.classList.add('brand_category_active')
+        }) 
+    });
+}
 // HIEN THI THONG TIN SAN PHAM //
 
 // Đóng div thong tin san pham
@@ -401,6 +428,7 @@ function addToCart(productid) {
                     tmpProduct = product[i]
                     tmpProduct.quantity = quantity
                     cartArr.push(tmpProduct)
+                    alert("THÊM VÀO GIỎ HÀNG THÀNH CÔNG!")
                 }
                 else if(product[i].id === productid && inCart(product[i].id) == true){
                     alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
@@ -632,7 +660,13 @@ function buy(){
 	}
 	else{
 		var billArray = JSON.parse(localStorage.getItem('bill'));
-		var bill = {id: billArray.length, info: info, totalprice: totalprice, customer: customer, date: d, status: 'Chưa xử lý'};
+        let billId = []
+        for(let i=0; i<billArray.length ;i++) {
+            billId.push(billArray[i].id);
+        } 
+        console.log(billId)
+        let billid = Math.max(...billId) + 1
+		var bill = {id: billid, info: info, totalprice: totalprice, customer: customer, date: d, status: 'Chưa xử lý'};
 		billArray.push(bill);
 		localStorage.setItem('bill', JSON.stringify(billArray));
 	}	
@@ -672,7 +706,7 @@ function showbill(){ // sửa 2
 		for (var i = 0; i < billArray.length; i++) {
 			if(user.username==billArray[i].customer.username){
                
-                    s += '<div class="billcontent" onclick="showBillDetail('+billArray[i].id +')">'+'<div>'
+                    s += '<div class="billcontent" >'+'<div onclick="showBillDetail('+billArray[i].id +')">'
                     for(let j = 0 ; j < billArray[i].info.length ; j++) {
                         s+= billArray[i].info[j].quantity + " x " + billArray[i].info[j].name+"<br>"
                     }
@@ -1098,14 +1132,19 @@ function checklogin(){
                             ${user.fullname}
                     </div>
                     <div class="logout-user">
-                        <button id="logout-btn" onclick="logout()">
-                            <div>
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </div>
-                            <div>
+                        <div id="accinfo-btn">
+                            <i class="fa-solid fa-circle-info"></i>
+                    
+                            <span>
+                                Tài khoản
+                            </span>
+                        </div>
+                        <div id="logout-btn" onclick="logout()">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>
                                 Đăng xuất
-                            </div>
-                        </button>              
+                            </span>
+                        </div>
                     </div>
                 </div>
                 `
