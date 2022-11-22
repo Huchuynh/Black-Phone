@@ -273,149 +273,6 @@ body{
     color: red;
     cursor: pointer;
 }
- /* 
-.signup,.signin {
-    font-family: 'Poppins',sans-serif;
-    display: none; 
-    position: fixed; 
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.7);
-    padding-top: 40px;
-}
-.signin form {
-    margin: 5% auto 15% auto;
-    width: 45%;
-    height: 65%;
-    border-radius: 50px;
-    padding: 10px;
-    background-color: rgba(255,255,255,.6);
-    display: flex;
-    flex-direction: column;
-}
-.signup form {
-    margin: 5% auto 15% auto;
-    width: 45%;
-    height: 80%;
-    border-radius: 50px;
-    padding: 10px;
-    background-color: rgba(255,255,255,.6);
-    display: flex;
-    flex-direction: column;
-}
-
-.signin form::after {
-    content: '';
-    position: absolute;
-    background-color: rgba(255,255,255,.5);
-    inset: 0;
-    transform: rotate(-5deg);
-    z-index: -1;
-    margin: 5% auto 15% auto;
-    width: 45%;
-    height: 65%;
-    border-radius: 50px;    
-}
-
-.signup form::after {
-    content: '';
-    position: absolute;
-    background-color: rgba(255,255,255,.5);
-    inset: 0;
-    transform: rotate(-5deg);
-    z-index: -1;
-    margin: 5% auto 15% auto;
-    width: 45%;
-    height: 80%;
-    border-radius: 50px;    
-}
-
-.signup-form-header,.signin-form-header {
-    display: flex;
-}
-.signup-form-header h2,.signin-form-header h2{
-    width: 90%;
-    font-size: 30px;
-    text-align: center;
-    padding: 20px 0px 20px 65px;
-}
-.signup-form-header span,.signin-form-header span {
-    width: 10%;
-    padding: 10px 10px 10px 0px;
-    text-align: center;
-}
-
-.signup-form-content , .signin-form-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    font-size: 20px;
-    padding: 10px;
-}
-.signup-form-content div , .signin-form-content div{
-    height: 40%;
-    padding: 20px;
-}
-.signup-form-content input , .signin-form-content input{
-    height: 100%;
-    width: 100%;
-    font-size: 20px;
-    border-radius: 40px;
-    padding: 15px;
-    margin: none;
-    border: unset;
-    background-color: rgba(255,255,255,.3);
-    transition: background .5s;
-}
-.signup-form-content input:focus , .signin-form-content input:focus {
-    background-color: white;
-}
-.signup-form-content input::placeholder , .signin-form-content input::placeholder {
-    color: rgba(0, 0, 0, 0.9);
-    font-size: 18px;
-}
-.signup-form-content div:nth-child(4) , .signin-form-content div:nth-child(3) {
-    height: 20%;
-    width: 100%;
-    padding: 0px 250px;
-    box-sizing: border-box;
-}
-.signup-form-content button , .signin-form-content button{
-    height: 100%;
-    width: 100%;
-    border-radius: 30px;
-    font-size: 20px;
-    border: unset;
-    background: black;
-    color: white;
-    transition: background .5s;
-}
-.signup-form-content button:hover , .signin-form-content button:hover {
-    background: white;
-    color: black;
-    border: 3px solid black;
-} */
-/* .signup form ,.signin form{
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s;
-    z-index:0;
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-} */
-
-
 
 /*Dang ki dang nhap*/
 
@@ -1031,6 +888,7 @@ img {
 
 /* PHẦN CHI TIẾT SẢN PHẨM */
 .product-detail {
+    font-family: 'Poppins',sans-serif;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 999; /* Sit on top */
@@ -1139,7 +997,7 @@ img {
     height: 50px;
     border-radius: 50px;
     border: 3px solid black;
-    font-size: 20px;
+    font-size: 25px;
     width: 100%;
 }
 .pd-main .button button:hover {

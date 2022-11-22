@@ -759,11 +759,12 @@ function showtableinbill(billid) {
         for(let j = 0 ; j < bill[i].info.length ; j++)
             s+=`
                 <tr>
-                    <td style="width: 12.5%;">${bill[i].info[j].id}</td>
-                    <td style="width: 25%;">${bill[i].info[j].name}</td>
-                    <td style="width: 12.5%;">${bill[i].info[j].quantity}</td>
-                    <td style="width: 25%;">${currency(bill[i].info[j].price) }</td>
-                    <td style="width: 25%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
+                    <td style="width: 12.33%;">${j+1}</td>
+                    <td style="width: 12.33%;">${bill[i].info[j].id}</td>
+                    <td style="width: 21%;">${bill[i].info[j].name}</td>
+                    <td style="width: 12.33%;">${bill[i].info[j].quantity}</td>
+                    <td style="width: 21%;">${currency(bill[i].info[j].price) }</td>
+                    <td style="width: 21%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
                 </tr>  `
     }
     return s 
@@ -798,11 +799,12 @@ function showBillDetail(billid) {
                     <div class="bill-list-detail-content-2">
                         <table>
                             <tr>
-                                <th style="width: 12.5%;">Mã sản phẩm</th>
-                                <th style="width: 25%;">Tên sản phẩm</th>
-                                <th style="width: 12.5%;">Số lượng</th>
-                                <th style="width: 25%;">Đơn giá</th>
-                                <th style="width: 25%;">Thành tiền</th>
+                                <th style="width: 12.33%;">Số thứ tự</th>
+                                <th style="width: 12.33%;">Mã sản phẩm</th>
+                                <th style="width: 21%;">Tên sản phẩm</th>
+                                <th style="width: 12.33%;">Số lượng</th>
+                                <th style="width: 21%;">Đơn giá</th>
+                                <th style="width: 21%;">Thành tiền</th>
                             </tr>
                             ${showtableinbill(billid)}
                         </table>
@@ -826,7 +828,7 @@ document.querySelector('#contact-form').addEventListener('submit', (e) => {
     e.target.elements.name.value = '';
     e.target.elements.email.value = '';
     e.target.elements.message.value = '';
-  });
+});
 /* ------------- */
 
 

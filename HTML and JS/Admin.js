@@ -571,35 +571,7 @@ function deleteProduct(productid) {
     })
 }
 
-function checkinfoaddproduct(tmpPrd) {
-    let flag = false 
-    if(tmpPrd.brand[0] != tmpPrd.id[0]) {
-        document.getElementById("branderror").style.display = 'block'
-        document.getElementById("branderror").innerHTML = 'ID sản phẩm này không thuộc hãng vừa nhập'
-        document.getElementById("addprd-brand").style.border = '2px solid red'
-        document.getElementById("addprd-brand").focus()
-        return false
-    }
-    else {
-        document.getElementById("branderror").style.display = 'none'
-        document.getElementById("addprd-brand").style.border = 'unset'
-    }
-    let product = JSON.parse(localStorage.getItem('product'))
-    for(let i = 0 ; i < product.length ; i++ ) {
-        if(tmpPrd.id == product[i].id) {
-            document.getElementById("iderror").style.display = 'block'
-            document.getElementById("iderror").innerHTML = 'ID đã tồn tại'
-            document.getElementById("addprd-id").style.border = '2px solid red'
-            document.getElementById("addprd-id").focus()
-            return false
-        }
-       
-        flag = true
-    }
-    document.getElementById("iderror").style.display = 'none'
-    document.getElementById("addprd-id").style.border = 'unset'
-    return flag
-}
+
 addProduct()
 function setId_addProduct() {
     let product = JSON.parse(localStorage.getItem('product'))
@@ -635,15 +607,10 @@ function addProduct() {
 
         let tmpPrd = {name,price,origin,img,brand,id,
                      info : {screen,camera,storage,chip}}
-        if(checkinfoaddproduct(tmpPrd)) {
             product.push(tmpPrd)
             localStorage.setItem('product',JSON.stringify(product))
             document.getElementById("addProduct-form").style.display = 'none'
             alert("THÊM SẢN PHẨM THÀNH CÔNG !")
-        }
-        else {
-            alert("THÊM SẢN PHẨM THẤT BẠI !")
-        }
     })
 }
 
@@ -688,11 +655,12 @@ function showtableinbill(billid) {
         for(let j = 0 ; j < bill[i].info.length ; j++)
             s+=`
                 <tr>
-                    <td style="width: 12.5%;">${bill[i].info[j].id}</td>
-                    <td style="width: 25%;">${bill[i].info[j].name}</td>
-                    <td style="width: 12.5%;">${bill[i].info[j].quantity}</td>
-                    <td style="width: 25%;">${currency(bill[i].info[j].price) }</td>
-                    <td style="width: 25%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
+                    <td style="width: 12.33%;">${j+1}</td>
+                    <td style="width: 12.33%;">${bill[i].info[j].id}</td>
+                    <td style="width: 21%;">${bill[i].info[j].name}</td>
+                    <td style="width: 12.33%;">${bill[i].info[j].quantity}</td>
+                    <td style="width: 21%;">${currency(bill[i].info[j].price) }</td>
+                    <td style="width: 21%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
                 </tr>  `
     }
     return s 
@@ -727,11 +695,12 @@ function showBillDetail(billid) {
                     <div class="bill-list-detail-content-2">
                         <table>
                             <tr>
-                                <th style="width: 12.5%;">Mã sản phẩm</th>
-                                <th style="width: 25%;">Tên sản phẩm</th>
-                                <th style="width: 12.5%;">Số lượng</th>
-                                <th style="width: 25%;">Đơn giá</th>
-                                <th style="width: 25%;">Thành tiền</th>
+                                <th style="width: 12.33%;">Số thứ tự</th>
+                                <th style="width: 12.33%;">Mã sản phẩm</th>
+                                <th style="width: 21%;">Tên sản phẩm</th>
+                                <th style="width: 12.33%;">Số lượng</th>
+                                <th style="width: 21%;">Đơn giá</th>
+                                <th style="width: 21%;">Thành tiền</th>
                             </tr>
                             ${showtableinbill(billid)}
                         </table>
