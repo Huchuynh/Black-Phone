@@ -646,7 +646,7 @@ function buy(){
 	for (var i = 0; i < cartArray.length; i++) {
 			/* info+=cartArray[i].quantity+' x '+cartArray[i].name+"<br>"; */
 			totalprice+=cartArray[i].quantity*cartArray[i].price;
-            prd = {id: cartArray[i].id , name: cartArray[i].name ,quantity:cartArray[i].quantity, price: cartArray[i].price}
+            prd = {id: cartArray[i].id , name: cartArray[i].name ,quantity:cartArray[i].quantity, price: cartArray[i].price,img: cartArray[i].img}
             info.push(prd);
 	}
 	var customer = JSON.parse(localStorage.getItem('userlogin'));
@@ -806,7 +806,7 @@ function showBillDetail(billid) {
                                 <th style="width: 21%;">Đơn giá</th>
                                 <th style="width: 21%;">Thành tiền</th>
                             </tr>
-                                ${showtableinbill(billid)}
+                            ${showtableinbill(billid)}
                         </table>
                     </div>
                     <div class="bill-list-detail-content-3">

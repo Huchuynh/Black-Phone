@@ -23,16 +23,16 @@
             <div class="info">
                 <ul>
                     <li class="li" onclick="currentSlide(1)">
-                        <span>Trang chủ</span>
-                    </li>
-                    <li class="li" onclick="currentSlide(2)">
                         <span>Sản phẩm</span>
                     </li>
-                    <li class="li" onclick="currentSlide(3)">
+                    <li class="li" onclick="currentSlide(2)">
                         <span>Đơn hàng</span>
                     </li>
-                    <li class="li" onclick="currentSlide(4)">
+                    <li class="li" onclick="currentSlide(3)">
                         <span>Khách hàng</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(4)">
+                        <span>Thống kê</span>
                     </li>
                 </ul>
             </div>
@@ -59,15 +59,7 @@
         </div>
     </div>
     
-    <div class="home-page mySlides">
-        <div class="slider-ads">
-            <img class="ads" src="../image/QC1.webp" alt="">
-            <img class="ads" src="../image/QC2.webp" alt="">
-            <img class="ads" src="../image/QC3.webp" alt="">
-            <img class="ads" src="../image/QC4.webp" alt="">
-            <img class="ads" src="../image/QC5.webp" alt="">
-        </div>
-    </div>
+    
 
     <div class="container mySlides" >
         <div class="grid wide content">
@@ -241,6 +233,35 @@
         KHÁCH HÀNG
     </div>
 
+    <div class="statistic mySlides">
+        <div class="statistic-header">
+            <h1>THỐNG KÊ DOANH THU</h1>
+            <div class="statistic-filter">
+                <span>Từ ngày:</span>
+                &nbsp;
+                <input type="date" id="date-from">
+                &nbsp;
+                <span>đến</span>
+                &nbsp;
+                <input type="date" id="date-to">
+                &nbsp;
+                &nbsp;
+                <select id="statistic-brand-filter">
+                    <option value="all">Tất cả</option>
+                    <option value="iphone">iPhone</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="xiaomi">Xiaomi</option>
+                    <option value="vivo">Vivo</option>
+                </select>
+                &nbsp;
+                &nbsp;
+                <button type="button">Lọc</button>
+            </div>
+        </div>
+        <div class="statistic-content">
+
+        </div>
+    </div>
     <div class="Alertbox" id="alertbox">
         <div class="Alertbox-div">
             <div class="Alertbox-div-header">

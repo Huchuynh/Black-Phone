@@ -822,7 +822,7 @@ img {
     margin-top: 24px;
     position: relative;
     border-radius: 2px;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
     transition: transform linear 0.1s;
     will-change: transform;
 }
@@ -1353,6 +1353,7 @@ footer {
     text-align: center;
 }
 #bill {
+    font-family: 'Poppins',sans-serif;
     border: 2px solid black;
     margin: 20px;
 }
@@ -1403,7 +1404,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 170px;
+    margin-left: 150px;
 }
 .bill_heading_info .bill_info:nth-child(3) {
     font-size: 1.8rem;
@@ -1415,7 +1416,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 260px;
+    margin-left: 250px;
 }
 .bill_heading_info3 .bill_info:nth-child(3) {
     font-size: 1.8rem;
@@ -1433,7 +1434,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 500;
     color: rgb(3, 182, 3);
-    margin-left: 110px;
+    margin-left: 90px;
 }
 .bill_heading_info3 .bill_info:nth-child(4) {
     font-size: 1.8rem;
@@ -1807,7 +1808,7 @@ input:checked + .slider:before {
 }
 
 /* BILL LIST FILTER */
-.bill-list-filter {
+.bill-list-filter{
     font-family: 'Poppins',sans-serif;
     height: 70px;
     padding: 25px 150px 0px;
@@ -1912,6 +1913,63 @@ input:checked + .slider:before {
     background: white;
     color: black;
     border: 3px solid black;
+}
+/* THỐNG KÊ PHẦN ADMIN */
+.statistic {
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 50px;
+    border: 3px solid black;
+    box-shadow:0px 0px 10px rgb(0 0 0 / 200%); 
+}
+.statistic-header {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 30%;
+    padding-bottom: unset;
+    font-size: 45px;
+    text-align: center;
+    position: sticky;
+    position: -webkit-sticky;
+}
+.statistic-filter {
+    font-family: 'Poppins',sans-serif;
+    height: 70px;
+    padding: 25px 150px 0px;
+    font-size: 25px;
+}
+.statistic-filter input {
+    height: 40px;
+    width: 160px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 3px solid black;
+    padding: 7px;
+}
+.statistic-filter button {
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 100px;
+    border: 3px solid black;
+    transition: background .3s;
+}
+.statistic-filter button:hover {
+    background-color: white;
+    color: black;
+}
+.statistic-filter select {
+    height: 40px;
+    width: 160px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 3px solid black;
+    padding: 5px;
+}
+.statistic-content {
+    height: 70%;
 }
 
 /* LIÊN HỆ */
