@@ -640,6 +640,26 @@ function billFilter() {
     }
     
 }
+// Khach hang
+showCustomerList();
+function showCustomerList() {
+    let customerInfo = JSON.parse(localStorage.getItem('user'));
+    let s = '';
+
+    for (let i = 0; i < customerInfo.length; i++) {
+        s+=
+        `
+            <tr>
+                <th style="width: 20%">${customerInfo[i].fullname}</th>
+                <th style="width: 20%">${customerInfo[i].username}</th>
+                <th style="width: 20%">${customerInfo[i].password}</th>
+                <th style="width: 20%">${customerInfo[i].phone}</th>
+                <th style="width: 20%">${customerInfo[i].datesignup}</th>
+            </tr>
+        `
+    }
+    document.getElementById('customer-list-perform').innerHTML = s;
+}
 /*-----   DANG XUAT  ----- */
 function logout(){
 	localStorage.removeItem('userlogin');
