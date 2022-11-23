@@ -239,11 +239,11 @@
             <div class="statistic-filter">
                 <span>Từ ngày:</span>
                 &nbsp;
-                <input type="date" id="date-from">
+                <input type="date" id="date-from1">
                 &nbsp;
                 <span>đến</span>
                 &nbsp;
-                <input type="date" id="date-to">
+                <input type="date" id="date-to1">
                 &nbsp;
                 &nbsp;
                 <select id="statistic-brand-filter">
@@ -257,9 +257,25 @@
                 &nbsp;
                 <button type="button">Lọc</button>
             </div>
+            <div class="bill-list-table">
+                <table>
+                    <tr>
+                        <th style="width: 15%;">Mã sản phẩm</th>
+                        <th style="width: 50%;">Sản phẩm</th>
+                        <th style="width: 10%;">Đã bán</th>
+                        <th style="width: 25%;">Thành tiền</th>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="statistic-content">
-
+        <div class="statistic-content" id="statistic-perform">
+            
+        </div>
+        <div class="statistic-total">
+            <span>Tổng doanh thu:</span>
+            &nbsp;
+            &nbsp;
+            <p id="statistic-totalprice"></p>
         </div>
     </div>
     <div class="Alertbox" id="alertbox">

@@ -1,15 +1,8 @@
-//createProduct()
-// HOME PAGE //
-
-
-
 let slideIndex = 1
 showSlides(slideIndex)
-
 function currentSlide(n) {
     showSlides(slideIndex = n);
 }
-
 function showSlides(n) {
     let i
     let slides = document.getElementsByClassName("mySlides")
@@ -25,18 +18,12 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";  
     lis[slideIndex-1].className += " active";
 }
-
-
-// MANG SAN PHAM //
 function currency(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' VND';
 }
-
-
 // HIEN THI SAN PHAM //
 
 /* HIEN THI SAN PHAM NGAU NHIEN */
-
 showProduct(JSON.parse(localStorage.getItem('product')))
 function showProduct(tmpArr) {
     let product = tmpArr
@@ -100,7 +87,6 @@ function showProduct(tmpArr) {
     pageActive()
 }
 /* HIEN THI SAN PHAM THEO HANG */
-
 showProduct_classified()
 function showProduct_classified() {
     let product = JSON.parse(localStorage.getItem('product'))
@@ -138,7 +124,6 @@ function showProduct_classified() {
         brand_categoryActive()
     })
 }
-
 function pageActive() {
     let pages = document.querySelectorAll(".pagenumber")
     pages.forEach(page => {
@@ -236,7 +221,6 @@ function showProductFix (productid) {
 }
 
 /* -------------------- TIM KIEM THEO GIA   -------------------- */
-
 function search1(){
     let tmpArr = []
 	var productsearch = document.getElementById('search').value.toLowerCase();
@@ -383,7 +367,6 @@ function updateProduct (productid) {
         alert("CẬP NHẬT SẢN PHẨM THÀNH CÔNG !")
     })
 }
-
 function deleteProduct(productid) {
     document.getElementById("delete-product-btn").addEventListener("click",function() {
         document.getElementById('alertbox').style.display = 'block'
@@ -405,8 +388,6 @@ function deleteProduct(productid) {
         })
     })
 }
-
-
 addProduct()
 function setId_addProduct() {
     let product = JSON.parse(localStorage.getItem('product'))
@@ -626,7 +607,6 @@ function billFilter() {
             dates.push(parseYMD(bill[i].date)) 
         }
         let filtereddate = dates.filter(dateFilter)
-        console.log(filtereddate)
         for(let i = 0 ; i < bill.length ; i++) {
             for(let j = 0 ; j < filtereddate.length ; j++ ) {
                 if(parseYMD(bill[i].date) == filtereddate[j]) {
@@ -639,6 +619,83 @@ function billFilter() {
         showBillList1(billArr)
     }
     
+}
+/* THỐNG KÊ */
+function dateFilter_statistic(date) {
+    let d1 = document.getElementById("date-from1").value
+    let d2 = document.getElementById("date-to1").value
+    return date>= d1 && date<=d2
+}
+function statisticFilter() {
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let dates = []
+    let billArr = []
+    let d1 = document.getElementById("date-from1")
+    let d2 = document.getElementById("date-to1")
+    if(d1.value > d2.value && d2.value != "") {
+        alert("SAI THỨ TỰ NGÀY !") 
+        d1.focus()
+        d2.focus()
+    }
+    else { 
+        for(let i = 0 ; i < bill.length ; i++) {
+            dates.push(parseYMD(bill[i].date)) 
+        }
+        let filtereddate = dates.filter(dateFilter)
+        for(let i = 0 ; i < bill.length ; i++) {
+            for(let j = 0 ; j < filtereddate.length ; j++ ) {
+                if(parseYMD(bill[i].date) == filtereddate[j]) {
+                    billArr.push(bill[i])
+                    break
+                }
+            }
+        }
+        showBillList1(billArr)
+    }
+    
+}
+showStatisticlist()
+function showStatisticlist() {
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let tmpPrd = []
+    let s = ""
+    for(let i = 0 ; i < bill.length ; i++) {
+        for(let j = 0 ; j < bill[i].info.length ;j++ )
+        tmpPrd.push(bill[i].info[j])  
+    }
+    for(let i = 0; i < tmpPrd.length-1 ; i++) {
+        for(let j = i+1 ; j < tmpPrd.length ; j++) {
+            if(tmpPrd[i].id === tmpPrd[j].id) {
+                tmpPrd[i].quantity = parseInt(tmpPrd[i].quantity) + parseInt(tmpPrd[j].quantity)
+                tmpPrd.splice(j,1); 
+            }
+        }
+    }
+    let totalprice = 0;
+    for(let i = 0 ; i < tmpPrd.length ; i++) {
+        s+= `
+        <div class="statistic-content-prd">
+            <div class="statistic-content-prd-id">
+                <span>${tmpPrd[i].id}</span>
+            </div>
+            <div class="statistic-content-prd-name">
+                <div>
+                    <img src="${tmpPrd[i].img}" alt="">
+                </div>
+                <span>${tmpPrd[i].name}</span>
+            </div>
+            <div class="statistic-content-prd-quantity">
+                <span>${tmpPrd[i].quantity}</span>
+            </div>
+            <div class="statistic-content-price">
+                ${currency(tmpPrd[i].quantity * tmpPrd[i].price)}
+            </div>
+        </div> 
+        `
+        totalprice += tmpPrd[i].quantity * tmpPrd[i].price
+    }
+    document.getElementById('statistic-perform').innerHTML = s
+    document.getElementById('statistic-totalprice').innerHTML = currency(totalprice) 
 }
 /*-----   DANG XUAT  ----- */
 function logout(){
