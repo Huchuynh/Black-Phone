@@ -1,6 +1,6 @@
 //createProduct()
 // HOME PAGE //
-
+// tét
 
 
 let slideIndex = 1
