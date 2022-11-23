@@ -806,7 +806,7 @@ function showBillDetail(billid) {
                                 <th style="width: 21%;">Đơn giá</th>
                                 <th style="width: 21%;">Thành tiền</th>
                             </tr>
-                            ${showtableinbill(billid)}
+                                ${showtableinbill(billid)}
                         </table>
                     </div>
                     <div class="bill-list-detail-content-3">
@@ -1080,7 +1080,7 @@ function login(e){
         if (password.length < 8) {
             document.getElementById('passloginerror').style.display = 'block';
             document.getElementById('passloginerror').innerHTML = 'Mật khẩu phải đủ 8 kí tự';
-document.getElementById('passwordlogin').style.border = '1px solid red';
+            document.getElementById('passwordlogin').style.border = '1px solid red';
             flag = true;
         }
         else {
