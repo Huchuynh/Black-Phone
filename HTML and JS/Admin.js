@@ -556,6 +556,25 @@ function billFilter() {
     }
     
 }
+// DANH SÁCH KHÁCH HÀNG
+showCustomerList();
+function showCustomerList() {
+    let customer = JSON.parse(localStorage.getItem('user'));
+    let s = "";
+
+    for (let i = 0 ; i < customer.length ; i++) {
+        s += `
+             <tr>
+                 <td style="width: 20%">${customer[i].fullname}</td>
+                 <td style="width: 20%">${customer[i].username}</td>
+                 <td style="width: 20%">${customer[i].password}</td>
+                 <td style="width: 20%">${customer[i].phone}</td>
+                 <td style="width: 20%">${customer[i].datesignup}</td>
+             </tr>
+             `
+    }
+    document.getElementById('customer-list-perform').innerHTML = s;
+}
 /* THỐNG KÊ */
 function dateFilter_statistic(date) {
     let d1 = document.getElementById("date-from1").value
