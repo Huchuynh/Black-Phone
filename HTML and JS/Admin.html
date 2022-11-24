@@ -255,14 +255,14 @@
             <div class="statistic-filter">
                 <span>Từ ngày:</span>
                 &nbsp;
-                <input type="date" id="date-from1"  >
+                <input type="date" id="date-from1" onchange="statisticFilter()">
                 &nbsp;
                 <span>đến</span>
                 &nbsp;
-                <input type="date" id="date-to1" >
+                <input type="date" id="date-to1" onchange="statisticFilter()">
                 &nbsp;
                 &nbsp;
-                <select id="statistic-brand-filter" >
+                <select id="statistic-brand-filter" onchange="statisticFilter()">
                     <option value="all">Tất cả</option>
                     <option value="iphone">iPhone</option>
                     <option value="samsung">Samsung</option>
