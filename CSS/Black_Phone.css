@@ -1975,13 +1975,13 @@ input:checked + .slider:before {
 }
 
 /* BILL LIST FILTER */
-.customer-list-filter{
+.bill-list-filter,.customer-list-filter{
     font-family: 'Poppins',sans-serif;
     height: 70px;
     padding: 25px 150px 0px;
     font-size: 25px;
 }
-.customer-list-filter input {
+.bill-list-filter input,.customer-list-filter input {
     height: 40px;
     width: 160px;
     font-size: 20px;
@@ -1989,7 +1989,7 @@ input:checked + .slider:before {
     border: 3px solid black;
     padding: 7px;
 }
-.customer-list-filter button {
+.bill-list-filter button,.customer-list-filter button {
     height: 40px;
     width: 200px;
     font-size: 20px;
@@ -1999,7 +1999,7 @@ input:checked + .slider:before {
     border: 3px solid black;
     transition: background .3s;
 }
-.customer-list-filter button:hover {
+.bill-list-filter button:hover,.customer-list-filter button:hover {
     background-color: white;
     color: black;
 }
