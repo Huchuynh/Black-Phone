@@ -855,8 +855,19 @@ function showPass3() {
 function createAdmin(){
 	if(localStorage.getItem('user')===null){
         var userArray = [];
+        // test user
 		var user = {username: 'admin', password: '12345678', fullname: 'ADMIN', phone: '0867575163' , datesignup: '11-6-2022'};
+        let user2 = {username: 'name1', password: '12345678', fullname: 'CAI TEN SO 1', phone: '0912345678' , datesignup: '11-24-2022'};
+        let user3 = {username: 'name2', password: '12345678', fullname: 'CAI TEN SO 2', phone: '0923456789' , datesignup: '11-24-2022'};
+        let user4 = {username: 'name3', password: '12345678', fullname: 'CAI TEN SO 3', phone: '0934567890' , datesignup: '11-24-2022'};
+        let user5 = {username: 'name4', password: '12345678', fullname: 'CAI TEN SO 4', phone: '0945678901' , datesignup: '11-24-2022'};
+        let user6 = {username: 'name5', password: '12345678', fullname: 'CAI TEN SO 5', phone: '0956789012' , datesignup: '11-24-2022'};
 		userArray.push(user);
+		userArray.push(user6);
+		userArray.push(user5);
+		userArray.push(user4);
+		userArray.push(user3);
+		userArray.push(user2);
 		localStorage.setItem('user',JSON.stringify(userArray));
 	}
 }
