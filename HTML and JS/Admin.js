@@ -770,6 +770,187 @@ function statisticFilter_Brand(billarr) {
         document.getElementById('statistic-totalprice').innerHTML = currency(totalprice)
     }
 }
+function statisticFilter_Brand1() {
+    let brand = document.getElementById('statistic-brand-filter') .value
+    let bill = JSON.parse(localStorage.getItem('bill'))
+    let tmpPrd = []
+    for(let i = 0 ; i < bill.length ; i++) {
+        for(let j = 0 ; j < bill[i].info.length ;j++ )
+        tmpPrd.push(bill[i].info[j])  
+    }
+    for(let i = 0; i < tmpPrd.length-1 ; i++) {
+        for(let j = i+1 ; j < tmpPrd.length ; j++) {           
+            if(tmpPrd[i].id === tmpPrd[j].id) {
+                tmpPrd[i].quantity = parseInt(tmpPrd[i].quantity) + parseInt(tmpPrd[j].quantity)
+                tmpPrd.splice(j,1) 
+            }
+        }
+    }
+    if(brand === "iphone") {
+        let s1=""
+        let iphone = []
+        for(let i = 0 ; i < tmpPrd.length ; i++) {
+            if(tmpPrd[i].id[0] === 'i') {
+                iphone.push(tmpPrd[i])
+            }
+        }
+        let totalprice = 0;
+        for(let i = 0 ; i < iphone.length ; i++) {
+            s1+= `
+            <div class="statistic-content-prd">
+                <div class="statistic-content-prd-id">
+                    <span>${iphone[i].id}</span>
+                </div>
+                <div class="statistic-content-prd-name">
+                    <div>
+                        <img src="${iphone[i].img}" alt="">
+                    </div>
+                    <span>${iphone[i].name}</span>
+                </div>
+                <div class="statistic-content-prd-quantity">
+                    <span>${iphone[i].quantity}</span>
+                </div>
+                <div class="statistic-content-price">
+                    ${currency(parseInt(iphone[i].quantity)  * parseInt(iphone[i].price))}
+                </div>
+            </div> 
+            `
+            totalprice += parseInt(iphone[i].quantity)  * parseInt(iphone[i].price)
+        }
+        document.getElementById('statistic-perform').innerHTML = s1
+        document.getElementById('statistic-totalprice').innerHTML = currency(totalprice)
+    }
+    else if(brand === "samsung") {
+        let s2=""
+        let samsung = []
+        for(let i = 0 ; i < tmpPrd.length ; i++) {
+            if(tmpPrd[i].id[0] === 's') {
+                samsung.push(tmpPrd[i])
+            }
+        }
+        let totalprice = 0;
+        for(let i = 0 ; i < samsung.length ; i++) {
+            s2+= `
+            <div class="statistic-content-prd">
+                <div class="statistic-content-prd-id">
+                    <span>${samsung[i].id}</span>
+                </div>
+                <div class="statistic-content-prd-name">
+                    <div>
+                        <img src="${samsung[i].img}" alt="">
+                    </div>
+                    <span>${samsung[i].name}</span>
+                </div>
+                <div class="statistic-content-prd-quantity">
+                    <span>${samsung[i].quantity}</span>
+                </div>
+                <div class="statistic-content-price">
+                    ${currency(parseInt(samsung[i].quantity)  * parseInt(samsung[i].price))}
+                </div>
+            </div> 
+            `
+            totalprice += parseInt(samsung[i].quantity)  * parseInt(samsung[i].price)
+        }
+        document.getElementById('statistic-perform').innerHTML = s2
+        document.getElementById('statistic-totalprice').innerHTML = currency(totalprice)
+    }
+    else if(brand === "xiaomi") {
+        let s3 = ""
+        let xiaomi = []
+        for(let i = 0 ; i < tmpPrd.length ; i++) {
+            if(tmpPrd[i].id[0] === 'x') {
+                xiaomi.push(tmpPrd[i])
+            }
+        }
+        let totalprice = 0;
+        for(let i = 0 ; i < xiaomi.length ; i++) {
+            s3+= `
+            <div class="statistic-content-prd">
+                <div class="statistic-content-prd-id">
+                    <span>${xiaomi[i].id}</span>
+                </div>
+                <div class="statistic-content-prd-name">
+                    <div>
+                        <img src="${xiaomi[i].img}" alt="">
+                    </div>
+                    <span>${xiaomi[i].name}</span>
+                </div>
+                <div class="statistic-content-prd-quantity">
+                    <span>${xiaomi[i].quantity}</span>
+                </div>
+                <div class="statistic-content-price">
+                    ${currency(parseInt(xiaomi[i].quantity) * parseInt(xiaomi[i].price))}
+                </div>
+            </div> 
+            `
+            totalprice += parseInt(xiaomi[i].quantity) * parseInt(xiaomi[i].price)
+        }
+        document.getElementById('statistic-perform').innerHTML = s3
+        document.getElementById('statistic-totalprice').innerHTML = currency(totalprice)
+    }
+    else if (brand === "vivo"){
+        let s4=""
+        let vivo = []
+        for(let i = 0 ; i < tmpPrd.length ; i++) {
+            if(tmpPrd[i].id[0] === 'v') {
+                vivo.push(tmpPrd[i])
+            }
+        }
+        let totalprice = 0;
+        for(let i = 0 ; i < vivo.length ; i++) {
+            s4+= `
+            <div class="statistic-content-prd">
+                <div class="statistic-content-prd-id">
+                    <span>${vivo[i].id}</span>
+                </div>
+                <div class="statistic-content-prd-name">
+                    <div>
+                        <img src="${vivo[i].img}" alt="">
+                    </div>
+                    <span>${vivo[i].name}</span>
+                </div>
+                <div class="statistic-content-prd-quantity">
+                    <span>${vivo[i].quantity}</span>
+                </div>
+                <div class="statistic-content-price">
+                    ${currency(parseInt(vivo[i].quantity) * parseInt(vivo[i].price))}
+                </div>
+            </div> 
+            `
+            totalprice += parseInt(vivo[i].quantity) * parseInt(vivo[i].price)
+        }
+        document.getElementById('statistic-perform').innerHTML = s4
+        document.getElementById('statistic-totalprice').innerHTML = currency(totalprice)
+    }
+    else {
+        let s = ""
+        let totalprice = 0;
+        for(let i = 0 ; i < tmpPrd.length ; i++) {
+            s+= `
+            <div class="statistic-content-prd">
+                <div class="statistic-content-prd-id">
+                    <span>${tmpPrd[i].id}</span>
+                </div>
+                <div class="statistic-content-prd-name">
+                    <div>
+                        <img src="${tmpPrd[i].img}" alt="">
+                    </div>
+                    <span>${tmpPrd[i].name}</span>
+                </div>
+                <div class="statistic-content-prd-quantity">
+                    <span>${tmpPrd[i].quantity}</span>
+                </div>
+                <div class="statistic-content-price">
+                    ${currency(parseInt(tmpPrd[i].quantity) * parseInt(tmpPrd[i].price))}
+                </div>
+            </div> 
+            `
+            totalprice += parseInt(tmpPrd[i].quantity) * parseInt(tmpPrd[i].price)
+        }
+        document.getElementById('statistic-perform').innerHTML = s
+        document.getElementById('statistic-totalprice').innerHTML = currency(totalprice)
+    }
+}
 showStatisticlist()
 function showStatisticlist() {
     let bill = JSON.parse(localStorage.getItem('bill'))
