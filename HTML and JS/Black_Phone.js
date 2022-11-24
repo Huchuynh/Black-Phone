@@ -547,50 +547,6 @@ function search2(){
 	var priceform = document.getElementById('priceform').value;
 	var priceto = document.getElementById('priceto').value;
     var arrProduct = JSON.parse(localStorage.getItem('product'));
-	var s='';
-    function getFirstPageItems(tmpArr) {
-        if(tmpArr.length > 10) {
-            for(let i=0;i<10;i++) {
-            s += `
-                    <div class="col p-2-4 t-3 m-6" onclick="showProductDetail('${tmpArr[i].id}')" id="${tmpArr[i].id}">
-                        <a class="home_product_iteam" href="#" >
-                            <img src="${tmpArr[i].img}" alt="" class="home_product_iteam_img">
-                            <h4 class="home_product_iteam_name">
-                                ${tmpArr[i].name}
-                            </h4>
-                            <div class="home_produc_iteam_price">
-                                <span class="home_product_price_curent">${currency(tmpArr[i].price)}</span>
-                            </div>
-                            <div class="home_product_iteam_origin">
-                                <span class="home_product_iteam_origin_name">${tmpArr[i].origin}</span>
-                            </div>
-                        </a>
-                    </div>
-                    `
-            }
-        }
-        else {
-            for(let i=0;i<tmpArr.length;i++) {
-                s += `
-                        <div class="col p-2-4 t-3 m-6" onclick="showProductDetail('${tmpArr[i].id}')" id="${tmpArr[i].id}">
-                            <a class="home_product_iteam" href="#" >
-                                <img src="${tmpArr[i].img}" alt="" class="home_product_iteam_img">
-                                <h4 class="home_product_iteam_name">
-                                    ${tmpArr[i].name}
-                                </h4>
-                                <div class="home_produc_iteam_price">
-                                    <span class="home_product_price_curent">${currency(tmpArr[i].price)}</span>
-                                </div>
-                                <div class="home_product_iteam_origin">
-                                    <span class="home_product_iteam_origin_name">${tmpArr[i].origin}</span>
-                                </div>
-                            </a>
-                        </div>
-                        `
-                }
-        }
-        document.getElementById('product-perform').innerHTML = s
-    }
 	if (brandsearch == 'all') {
         if (priceform == '' && priceto == '') {
             getFirstPageItems(JSON.parse(localStorage.getItem('product')))
@@ -603,10 +559,8 @@ function search2(){
                     tmpArr1.push(arrProduct[i])
                 } 
             }
-            getFirstPageItems(tmpArr1)
             showProduct(tmpArr1)
         }
-        
     }
 	else {
         let tmpArr2 = []
@@ -618,10 +572,8 @@ function search2(){
                 tmpArr2.push(arrProduct[i])
             }
 		}
-        getFirstPageItems(tmpArr2)
         showProduct(tmpArr2)
     }
-    document.getElementById('product-perform').innerHTML = s;
 }
 
 
@@ -1134,7 +1086,7 @@ function checklogin(){
                             ${user.fullname}
                     </div>
                     <div class="logout-user">
-                        <div id="accinfo-btn">
+                        <div onclick="infocustomer()" id="accinfo-btn">
                             <i class="fa-solid fa-circle-info"></i>
                     
                             <span>
@@ -1155,3 +1107,96 @@ function checklogin(){
 	}
 }
  
+// Thong tin khach hang
+function closeFormCustomer() {
+    document.getElementById('forminfocustomer').style.display = 'none';
+}
+
+// document.getElementById('forminfocustomer').addEventListener('submit', infocustomer);
+
+function infocustomer() {
+    document.getElementById('forminfocustomer').style.display = 'block';
+    var userlogin = JSON.parse(localStorage.getItem('userlogin'));
+    var arrUser = JSON.parse(localStorage.getItem('user'));
+    let s = "";
+    for (let i = 0; i < arrUser.length; i++) {
+        if (userlogin.username == arrUser[i].username && userlogin.password == arrUser[i].password) {
+            s += 
+            `
+            <div class="modal">
+                <div class="modal_overlay"></div>
+
+                <div class="modal_body">
+                        <!-- Authen form -->
+                    <div class="auth_form">
+                        <div class="auth_form__container">
+                            <div class="auth_form_header">
+                                <h3 class="auth_form__heading">Thong tin khach hang</h3>
+                                <!-- <a class="auth_form__switch_btn" onclick="showFormLogin(),closeFormSignUp()">Đăng nhập</a> -->
+                            </div>
+
+                            <div class="auth_form__form">
+                                <div class="auth_form__group">                                    
+                                    <input id="fullname_acc" type="text" value="${arrUser[i].fullname}" class="auth_form__input" placeholder="">
+                                    <div id="fullnameerror_acc">Tên không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                   
+                                    <input id="numberphone_acc" type="text" value="${arrUser[i].phone}" class="auth_form__input" placeholder="">
+                                    <div id="phoneerror_acc">Số điện thoại không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                 
+                                    <input id="username_acc" type="text" value="${arrUser[i].username}" class="auth_form__input" placeholder="">
+                                    <div id="usernameerror_acc">Tên đăng nhập không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                    
+                                    <input id="password_acc" type="password" value="${arrUser[i].password}" class="auth_form__input" placeholder="">
+                                    <a onclick="showPass()" id="eyeclose"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                                    <a onclick="showPass()" id="eyeopen"><i class="fa-regular fa-eye pass_icon"></i></a>
+                                    <div id="passerror_acc">Mật khẩu không được để trống</div>
+                                </div>
+                            </div>
+
+                            <div class="auth_form__controls">
+                                <button type="button" class="btn btn_nomal auth_form__control_back" onclick="closeFormCustomer()">THOÁT</button>
+                                <button type="button" class="btn btn__primary" onclick="updateCustomer(),closeFormCustomer()">LUU LAI</button>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `
+        }
+    }
+    document.getElementById('forminfocustomer').innerHTML = s;
+}
+function updateCustomer() {
+    let username = document.getElementById('username_acc').value;
+    let password = document.getElementById('password_acc').value;
+    let fullname = document.getElementById('fullname_acc').value;
+    let phone = document.getElementById('numberphone_acc').value;
+
+    let customerInfo = JSON.parse(localStorage.getItem('user'));
+    let tempInfo = JSON.parse(localStorage.getItem('userlogin'));
+
+    let newInfo = tempInfo;
+    newInfo.username = username;
+    newInfo.password = password;
+    newInfo.fullname = fullname;
+    newInfo.phone = phone;
+
+    for (let i = 0; i < customerInfo.length; i++) {
+        if (tempInfo.username == customerInfo[i].username && tempInfo.password == customerInfo[i].password) {
+            customerInfo[i].username = username;
+            customerInfo[i].password = password;
+            customerInfo[i].phone = phone;
+            customerInfo[i].fullname = fullname;
+        }
+    }
+    localStorage.setItem('user', JSON.stringify(customerInfo));
+    localStorage.removeItem('userlogin');
+    localStorage.setItem('userlogin', JSON.stringify(newInfo));
+    
+    alert('Cap nhat thanh cong');
+
+    checklogin();
+}
