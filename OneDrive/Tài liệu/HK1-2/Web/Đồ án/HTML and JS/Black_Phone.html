@@ -2,14 +2,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Huchuynh">
-    <link rel="stylesheet" href="../CSS/Black_Phone.css">
-    <link rel="stylesheet" href="../CSS/grid.css">
-    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="/CSS/Black_Phone.css">
+    <link rel="stylesheet" href="/CSS/grid.css">
+    <link rel="stylesheet" href="/CSS/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../image/logo.png">
     <title>Black Phone</title>
 </head>
 <body>
+    <!-- HEADER -->
     <div class="header">
         <div class="logo">
             <img src="../image/logo.png" alt="Phone">
@@ -140,6 +142,11 @@
                 </div>
             </div>
         </form>
+        <!-- Thong tin khach hang -->
+
+        <form id="forminfocustomer">
+            
+        </form>
 
         <div class="shopping-cart" id="cart">
             <div class="shopping-cart-div">
@@ -162,7 +169,8 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- TRANG CHU -->
     <div class="home-page mySlides">
         <div class="slider-ads">
             <img class="ads" src="../image/QC1.webp" alt="">
@@ -173,29 +181,30 @@
         </div>
     </div>
 
+    <!-- CONTENT -->
     <div class="container mySlides" >
         <div class="grid wide content">
             <div class="row">
                 <div class="col p-2 t-0 m-0">
                     <div class="category">
                        <ul class="category_list">
-                            <li class="category_iteam" id="Ip-category"> 
-                                <div>
+                            <li class="category_iteam" > 
+                                <div class="brand_category" id="Ip-category">
                                     <img src="../image/logo-iphone.png" alt="">
                                 </div>                         
                             </li>
-                            <li class="category_iteam" id="Samsung-category">
-                                <div class="brand-category">
+                            <li class="category_iteam" >
+                                <div class="brand_category" id="Samsung-category">
                                     <img src="../image/logo-samsung.png" alt="">
                                 </div>                                                         
                             </li>
-                            <li class="category_iteam" id="Xiaomi-category">
-                                <div class="brand-category">
+                            <li class="category_iteam" >
+                                <div class="brand_category" id="Xiaomi-category">
                                     <img src="../image/logo-xiaomi.png" alt=""> 
                                 </div>                                                     
                             </li>
-                            <li class="category_iteam" id="Vivo-category">
-                                <div class="brand-category">
+                            <li class="category_iteam" >
+                                <div class="brand_category" id="Vivo-category">
                                     <img src="../image/logo-vivo.png" alt="">
                                 </div>                       
                             </li>
@@ -239,11 +248,9 @@
         </div>
     </div> 
   
-
     <!-- Đơn hàng -->
     <div class="mySlides" id="bill">
 
-          
     </div>
     <div class="bill-list-detail" id="bill-list-detail" >
                 <!-- CHI TIẾT ĐƠN HÀNG -->

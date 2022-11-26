@@ -1,6 +1,25 @@
 createProduct()
-createAdmin()
+//createAdmin()
 checklogin()
+createUser_local()
+function createUser_local() {
+    if(localStorage.getItem('user')=== null) {
+        let userArray = []
+        var user = {id: "admin",username: 'admin', password: '12345678', fullname: 'ADMIN', phone: '0867575163' , datesignup: '6-11-2022'};
+        var user1 = {id: "KH1",username: "haotuan", password: "04082003", fullname: "Mạch Hạo Tuấn", phone: "0938446903" , datesignup: '12-11-2022'};
+        var user2 = {id: "KH2",username: "huchuynh", password: "07072003", fullname: "Hu Chuynh", phone: "0996299763" , datesignup: '16-11-2022'};
+        var user3 = {id: "KH3",username: "annguyen", password: "012345678", fullname: "Nguyễn Văn An", phone: "0908134820" , datesignup: '18-11-2022'};
+        var user4 = {id: "KH4",username: "antran", password: "12345678", fullname: "Trần Văn An", phone: "0954123678" , datesignup: '22-11-2022'};
+        var user5 = {id: "KH5",username: "vannguyen", password: "12345678", fullname: "Nguyễn Văn", phone: "0987456321" , datesignup: '25-11-2022'};
+        userArray.push(user)
+        userArray.push(user1)
+        userArray.push(user2)
+        userArray.push(user3)
+        userArray.push(user4)
+        userArray.push(user5)
+        localStorage.setItem('user',JSON.stringify(userArray));
+    }
+}
 // HOME PAGE //
 var myIndex = 0
 carousel ()
@@ -264,6 +283,18 @@ function showProduct(tmpArr) {
     renderProduct1()
     displayPanigation1()
     changePage1()
+    pageActive()
+}
+function pageActive() {
+    let pages = document.querySelectorAll(".pagenumber")
+    pages.forEach(page => {
+        page.addEventListener('click',() => {
+            pages.forEach(page => {
+                page.classList.remove('page_active')
+            })
+            page.classList.add('page_active')
+        }) 
+    });
 }
 /* HIEN THI SAN PHAM THEO HANG */
 
@@ -280,27 +311,42 @@ function showProduct_classified() {
             return product.brand == "iphone"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Sscategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "samsung"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Xmcategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "xiaomi"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
     Vvcategory.addEventListener("click" , function() {
         tmp=product.filter(function(product){
             return product.brand == "vivo"
         })
         showProduct(tmp)
+        brand_categoryActive()
     })
 }
-
+brand_categoryActive()
+function brand_categoryActive() {
+    let brands = document.querySelectorAll(".brand_category")
+    brands.forEach(brand => {
+        brand.addEventListener('click',() => {
+            brands.forEach(brand => {
+                brand.classList.remove('brand_category_active')
+            })
+            brand.classList.add('brand_category_active')
+        }) 
+    });
+}
 // HIEN THI THONG TIN SAN PHAM //
 
 // Đóng div thong tin san pham
@@ -401,6 +447,7 @@ function addToCart(productid) {
                     tmpProduct = product[i]
                     tmpProduct.quantity = quantity
                     cartArr.push(tmpProduct)
+                    alert("THÊM VÀO GIỎ HÀNG THÀNH CÔNG!")
                 }
                 else if(product[i].id === productid && inCart(product[i].id) == true){
                     alert("SẢN PHẨM ĐÃ CÓ TRONG GIỎ HÀNG !")
@@ -519,50 +566,6 @@ function search2(){
 	var priceform = document.getElementById('priceform').value;
 	var priceto = document.getElementById('priceto').value;
     var arrProduct = JSON.parse(localStorage.getItem('product'));
-	var s='';
-    function getFirstPageItems(tmpArr) {
-        if(tmpArr.length > 10) {
-            for(let i=0;i<10;i++) {
-            s += `
-                    <div class="col p-2-4 t-3 m-6" onclick="showProductDetail('${tmpArr[i].id}')" id="${tmpArr[i].id}">
-                        <a class="home_product_iteam" href="#" >
-                            <img src="${tmpArr[i].img}" alt="" class="home_product_iteam_img">
-                            <h4 class="home_product_iteam_name">
-                                ${tmpArr[i].name}
-                            </h4>
-                            <div class="home_produc_iteam_price">
-                                <span class="home_product_price_curent">${currency(tmpArr[i].price)}</span>
-                            </div>
-                            <div class="home_product_iteam_origin">
-                                <span class="home_product_iteam_origin_name">${tmpArr[i].origin}</span>
-                            </div>
-                        </a>
-                    </div>
-                    `
-            }
-        }
-        else {
-            for(let i=0;i<tmpArr.length;i++) {
-                s += `
-                        <div class="col p-2-4 t-3 m-6" onclick="showProductDetail('${tmpArr[i].id}')" id="${tmpArr[i].id}">
-                            <a class="home_product_iteam" href="#" >
-                                <img src="${tmpArr[i].img}" alt="" class="home_product_iteam_img">
-                                <h4 class="home_product_iteam_name">
-                                    ${tmpArr[i].name}
-                                </h4>
-                                <div class="home_produc_iteam_price">
-                                    <span class="home_product_price_curent">${currency(tmpArr[i].price)}</span>
-                                </div>
-                                <div class="home_product_iteam_origin">
-                                    <span class="home_product_iteam_origin_name">${tmpArr[i].origin}</span>
-                                </div>
-                            </a>
-                        </div>
-                        `
-                }
-        }
-        document.getElementById('product-perform').innerHTML = s
-    }
 	if (brandsearch == 'all') {
         if (priceform == '' && priceto == '') {
             getFirstPageItems(JSON.parse(localStorage.getItem('product')))
@@ -575,10 +578,8 @@ function search2(){
                     tmpArr1.push(arrProduct[i])
                 } 
             }
-            getFirstPageItems(tmpArr1)
             showProduct(tmpArr1)
         }
-        
     }
 	else {
         let tmpArr2 = []
@@ -590,10 +591,8 @@ function search2(){
                 tmpArr2.push(arrProduct[i])
             }
 		}
-        getFirstPageItems(tmpArr2)
         showProduct(tmpArr2)
     }
-    document.getElementById('product-perform').innerHTML = s;
 }
 
 
@@ -618,7 +617,7 @@ function buy(){
 	for (var i = 0; i < cartArray.length; i++) {
 			/* info+=cartArray[i].quantity+' x '+cartArray[i].name+"<br>"; */
 			totalprice+=cartArray[i].quantity*cartArray[i].price;
-            prd = {id: cartArray[i].id , name: cartArray[i].name ,quantity:cartArray[i].quantity, price: cartArray[i].price}
+            prd = {id: cartArray[i].id , name: cartArray[i].name ,quantity:cartArray[i].quantity, price: cartArray[i].price,img: cartArray[i].img}
             info.push(prd);
 	}
 	var customer = JSON.parse(localStorage.getItem('userlogin'));
@@ -632,7 +631,12 @@ function buy(){
 	}
 	else{
 		var billArray = JSON.parse(localStorage.getItem('bill'));
-		var bill = {id: billArray.length, info: info, totalprice: totalprice, customer: customer, date: d, status: 'Chưa xử lý'};
+        let billId = []
+        for(let i=0; i<billArray.length ;i++) {
+            billId.push(billArray[i].id);
+        } 
+        let billid = Math.max(...billId) + 1
+		var bill = {id: billid, info: info, totalprice: totalprice, customer: customer, date: d, status: 'Chưa xử lý'};
 		billArray.push(bill);
 		localStorage.setItem('bill', JSON.stringify(billArray));
 	}	
@@ -649,7 +653,7 @@ function showbill(){ // sửa 2
     if(localStorage.getItem('userlogin')===null){
 		alert("Bạn phải đăng nhập trước khi xem hóa đơn");
         showFormLogin();
-		return false;
+		document.getElementById('bill').style.display = 'none'
 	}
     if (localStorage.getItem('bill') === null){  // sửa 1
         document.getElementById('bill').innerHTML = '<div class="bill_intro">"Hổng" có đơn nào hết<img class="bill_intro_icon" src="../image/billempty.jpg" alt=""> </div>';
@@ -672,7 +676,7 @@ function showbill(){ // sửa 2
 		for (var i = 0; i < billArray.length; i++) {
 			if(user.username==billArray[i].customer.username){
                
-                    s += '<div class="billcontent" onclick="showBillDetail('+billArray[i].id +')">'+'<div>'
+                    s += '<div class="billcontent" >'+'<div onclick="showBillDetail('+billArray[i].id +')">'
                     for(let j = 0 ; j < billArray[i].info.length ; j++) {
                         s+= billArray[i].info[j].quantity + " x " + billArray[i].info[j].name+"<br>"
                     }
@@ -711,7 +715,6 @@ function deleteBill(billid) {
                 alert("KHÔNG THỂ XÓA ĐƠN HÀNG ĐÃ ĐƯỢC XỬ LÝ!")
         }
         else {
-            
             alert("Bạn thật là thông minh");
             return true;
         }
@@ -726,11 +729,12 @@ function showtableinbill(billid) {
         for(let j = 0 ; j < bill[i].info.length ; j++)
             s+=`
                 <tr>
-                    <td style="width: 12.5%;">${bill[i].info[j].id}</td>
-                    <td style="width: 25%;">${bill[i].info[j].name}</td>
-                    <td style="width: 12.5%;">${bill[i].info[j].quantity}</td>
-                    <td style="width: 25%;">${currency(bill[i].info[j].price) }</td>
-                    <td style="width: 25%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
+                    <td style="width: 12.33%;">${j+1}</td>
+                    <td style="width: 12.33%;">${bill[i].info[j].id}</td>
+                    <td style="width: 21%;">${bill[i].info[j].name}</td>
+                    <td style="width: 12.33%;">${bill[i].info[j].quantity}</td>
+                    <td style="width: 21%;">${currency(bill[i].info[j].price) }</td>
+                    <td style="width: 21%;">${currency(bill[i].info[j].quantity * bill[i].info[j].price) }</td>
                 </tr>  `
     }
     return s 
@@ -765,11 +769,12 @@ function showBillDetail(billid) {
                     <div class="bill-list-detail-content-2">
                         <table>
                             <tr>
-                                <th style="width: 12.5%;">Mã sản phẩm</th>
-                                <th style="width: 25%;">Tên sản phẩm</th>
-                                <th style="width: 12.5%;">Số lượng</th>
-                                <th style="width: 25%;">Đơn giá</th>
-                                <th style="width: 25%;">Thành tiền</th>
+                                <th style="width: 12.33%;">Số thứ tự</th>
+                                <th style="width: 12.33%;">Mã sản phẩm</th>
+                                <th style="width: 21%;">Tên sản phẩm</th>
+                                <th style="width: 12.33%;">Số lượng</th>
+                                <th style="width: 21%;">Đơn giá</th>
+                                <th style="width: 21%;">Thành tiền</th>
                             </tr>
                             ${showtableinbill(billid)}
                         </table>
@@ -785,13 +790,15 @@ function showBillDetail(billid) {
     }
 }
 
+
+
 /* LIEN HE */
 document.querySelector('#contact-form').addEventListener('submit', (e) => {
     e.preventDefault();
     e.target.elements.name.value = '';
     e.target.elements.email.value = '';
     e.target.elements.message.value = '';
-  });
+});
 /* ------------- */
 
 
@@ -874,7 +881,17 @@ function createAdmin(){
 
 document.getElementById('formsignup').addEventListener('submit', createUser);
 document.getElementById('formlogin').addEventListener('submit', login);
-
+function setId_user() {
+    let userArray = JSON.parse(localStorage.getItem('user'))
+    let arrId = []
+    let id_num
+    for(let i = 1 ; i < userArray.length ; i++) {
+        id_num = parseInt((userArray[i].id).slice(2))
+        arrId.push(id_num)
+    }   
+    let tmp = Math.max(...arrId) + 1
+    return "KH" + tmp
+}
 function createUser(e) {
     e.preventDefault();
     var name = document.getElementById('fullname');
@@ -989,7 +1006,7 @@ function createUser(e) {
     }
     var d = new Date();
     var datesignup = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-    var user = {username: username.value, password: password.value, fullname: name.value, phone: phone.value , datesignup: datesignup};
+    var user = {id: setId_user(),username: username.value, password: password.value, fullname: name.value, phone: phone.value , datesignup: datesignup};
     var userArray = JSON.parse(localStorage.getItem('user'));
     for(var i=0;i<userArray.length;i++){
         if(user.phone==userArray[i].phone){
@@ -1006,7 +1023,6 @@ function createUser(e) {
             username.focus();
             return true;
         }
-
     }
     userArray.push(user);
     localStorage.setItem('user',JSON.stringify(userArray));
@@ -1043,7 +1059,7 @@ function login(e){
         if (password.length < 8) {
             document.getElementById('passloginerror').style.display = 'block';
             document.getElementById('passloginerror').innerHTML = 'Mật khẩu phải đủ 8 kí tự';
-document.getElementById('passwordlogin').style.border = '1px solid red';
+            document.getElementById('passwordlogin').style.border = '1px solid red';
             flag = true;
         }
         else {
@@ -1097,14 +1113,19 @@ function checklogin(){
                             ${user.fullname}
                     </div>
                     <div class="logout-user">
-                        <button id="logout-btn" onclick="logout()">
-                            <div>
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </div>
-                            <div>
+                        <div onclick="infocustomer()" id="accinfo-btn">
+                            <i class="fa-solid fa-circle-info"></i>
+                    
+                            <span>
+                                Tài khoản
+                            </span>
+                        </div>
+                        <div id="logout-btn" onclick="logout()">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>
                                 Đăng xuất
-                            </div>
-                        </button>              
+                            </span>
+                        </div>
                     </div>
                 </div>
                 `
@@ -1113,3 +1134,96 @@ function checklogin(){
 	}
 }
  
+// Thong tin khach hang
+function closeFormCustomer() {
+    document.getElementById('forminfocustomer').style.display = 'none';
+}
+
+// document.getElementById('forminfocustomer').addEventListener('submit', infocustomer);
+
+function infocustomer() {
+    document.getElementById('forminfocustomer').style.display = 'block';
+    var userlogin = JSON.parse(localStorage.getItem('userlogin'));
+    var arrUser = JSON.parse(localStorage.getItem('user'));
+    let s = "";
+    for (let i = 0; i < arrUser.length; i++) {
+        if (userlogin.username == arrUser[i].username && userlogin.password == arrUser[i].password) {
+            s += 
+            `
+            <div class="modal">
+                <div class="modal_overlay"></div>
+
+                <div class="modal_body">
+                        <!-- Authen form -->
+                    <div class="auth_form">
+                        <div class="auth_form__container">
+                            <div class="auth_form_header">
+                                <h3 class="auth_form__heading">Thong tin khach hang</h3>
+                                <!-- <a class="auth_form__switch_btn" onclick="showFormLogin(),closeFormSignUp()">Đăng nhập</a> -->
+                            </div>
+
+                            <div class="auth_form__form">
+                                <div class="auth_form__group">                                    
+                                    <input id="fullname_acc" type="text" value="${arrUser[i].fullname}" class="auth_form__input" placeholder="">
+                                    <div id="fullnameerror_acc">Tên không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                   
+                                    <input id="numberphone_acc" type="text" value="${arrUser[i].phone}" class="auth_form__input" placeholder="">
+                                    <div id="phoneerror_acc">Số điện thoại không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                 
+                                    <input id="username_acc" type="text" value="${arrUser[i].username}" class="auth_form__input" placeholder="">
+                                    <div id="usernameerror_acc">Tên đăng nhập không được để trống</div>
+                                </div>
+                                <div class="auth_form__group">                                    
+                                    <input id="password_acc" type="password" value="${arrUser[i].password}" class="auth_form__input" placeholder="">
+                                    <a onclick="showPass()" id="eyeclose"><i class="fa-regular fa-eye-slash pass_icon"></i></a>
+                                    <a onclick="showPass()" id="eyeopen"><i class="fa-regular fa-eye pass_icon"></i></a>
+                                    <div id="passerror_acc">Mật khẩu không được để trống</div>
+                                </div>
+                            </div>
+
+                            <div class="auth_form__controls">
+                                <button type="button" class="btn btn_nomal auth_form__control_back" onclick="closeFormCustomer()">THOÁT</button>
+                                <button type="button" class="btn btn__primary" onclick="updateCustomer(),closeFormCustomer()">LUU LAI</button>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `
+        }
+    }
+    document.getElementById('forminfocustomer').innerHTML = s;
+}
+function updateCustomer() {
+    let username = document.getElementById('username_acc').value;
+    let password = document.getElementById('password_acc').value;
+    let fullname = document.getElementById('fullname_acc').value;
+    let phone = document.getElementById('numberphone_acc').value;
+
+    let customerInfo = JSON.parse(localStorage.getItem('user'));
+    let tempInfo = JSON.parse(localStorage.getItem('userlogin'));
+
+    let newInfo = tempInfo;
+    newInfo.username = username;
+    newInfo.password = password;
+    newInfo.fullname = fullname;
+    newInfo.phone = phone;
+
+    for (let i = 0; i < customerInfo.length; i++) {
+        if (tempInfo.username == customerInfo[i].username && tempInfo.password == customerInfo[i].password) {
+            customerInfo[i].username = username;
+            customerInfo[i].password = password;
+            customerInfo[i].phone = phone;
+            customerInfo[i].fullname = fullname;
+        }
+    }
+    localStorage.setItem('user', JSON.stringify(customerInfo));
+    localStorage.removeItem('userlogin');
+    localStorage.setItem('userlogin', JSON.stringify(newInfo));
+    
+    alert('Cap nhat thanh cong');
+
+    checklogin();
+}
