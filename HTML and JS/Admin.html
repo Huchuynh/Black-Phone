@@ -1,0 +1,338 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Huchuynh">
+    <link rel="stylesheet" href="../CSS/Black_Phone.css">
+    <link rel="stylesheet" href="../CSS/grid.css">
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../image/logo.png">
+    <title>ADMIN</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../image/logo.png" alt="Phone">
+            <div>BLACK PHONE</div>
+        </div>
+        <div class="header-content">
+            <div class="input">
+                <input type="text" placeholder="Nhập tên điện thoại cần tìm" id="search" oninput="search1()">
+                <button onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="info">
+                <ul>
+                    <li class="li" onclick="currentSlide(1)">
+                        <span>Sản phẩm</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(2)">
+                        <span>Đơn hàng</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(3)">
+                        <span>Khách hàng</span>
+                    </li>
+                    <li class="li" onclick="currentSlide(4)">
+                        <span>Thống kê</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-account">
+            <div class="header-account-icon">
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+            <div class="header-account-name">
+                    ADMIN
+            </div>
+            <div class="logout">
+                <button id="logout-btn" onclick="logout()">
+                    <div>
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                    <div>
+                        Đăng xuất
+                    </div>
+                </button>              
+            </div>
+        </div>
+    </div>
+    
+    <!-- DANH SÁCH SẢN PHẨM -->
+    <div class="product-list mySlides" > 
+        <div class="product-list-header">
+            <h1>DANH SÁCH SẢN PHẨM</h1>
+            <div class="product-list-filter">
+                <span class="home_filter_lable">Tìm kiếm theo giá</span>
+                <div id="searchextend" class="">
+                    <div>
+                        <select id="brandsearch" onchange="search2()">
+                            <option value="all" >Tất cả</option>
+                            <option value="iphone">iPhone</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="xiaomi">Xiaomi</option>
+                            <option value="vivo">Vivo</option>
+                        </select>
+                    </div>
+                    <div> 
+                        <input type="number" id="priceform1"  placeholder="Giá từ" oninput="search2()" class="priceform" min=0> &mdash;
+                        <input type="number" id="priceto1" placeholder="Đến" oninput="search2()" class="priceto" min=0>
+                        <button class="search_btn" onclick="search2()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <div class="addProduct">
+                        <button id="addProduct-btn" onclick="document.getElementById('addProduct-form').style.display='block'">Thêm sản phẩm</button>  
+                    </div>
+                </div>
+                
+            </div>
+            <div class="product-list-table">
+                <table>
+                    <tr>
+                        <th style="width: 16.6%;">Mã sản phẩm</th>
+                        <th style="width: 16.6%;">Ảnh</th>
+                        <th style="width: 16.6%;">Tên sản phẩm</th>
+                        <th style="width: 16.6%;">Hãng</th>
+                        <th style="width: 16.6%;">Đơn giá</th>
+                        <th style="width: 16.6%;">Sửa / Xóa</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="addProduct-form" id="addProduct-form">
+            <form>
+                <div class="addProduct-form-header">
+                    <span onclick="document.getElementById('addProduct-form').style.display='none'" class="close" id="close" >&times;</span>
+                    <h2>Thêm sản phẩm</h2>
+                </div>
+                <div class="addProduct-form-content">
+                    <div>
+                        <p>ID: </p>
+                        <input type="text" id="addprd-id" placeholder="ID" readonly>
+                    </div>
+                    <div>
+                        <p>Tên sản phẩm: </p>
+                        <input type="text" id="addprd-name" placeholder="Tên sản phẩm" required>
+                    </div>
+                    <div>
+                        <p>Màn hình: </p>
+                        <input type="text" id="addprd-screen" placeholder="Màn hình" required>
+                    </div>
+                    <div>
+                        <p>Camera: </p>
+                        <input type="text" id="addprd-camera" placeholder="Camera" required>
+                    </div>
+                    <div>
+                        <p>Bộ nhớ: </p>
+                        <input type="text" id="addprd-storage" placeholder="Bộ nhớ" required>
+                    </div>
+                    <div>
+                        <p>Chip: </p>
+                        <input type="text" id="addprd-chip" placeholder="Chip" required>
+                    </div>
+                    <div>
+                        <p>Hãng: </p>
+                        <select id="addprd-brand" onchange="setId_addProduct()" required>
+                            <option value="iphone">iPhone</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="xiaomi">Xiaomi</option>
+                            <option value="vivo">Vivo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Xuất xứ: </p>
+                        <input type="text" id="addprd-origin" placeholder="Xuất xứ" required>
+                    </div>
+                    <div>
+                        <p>Giá: </p>
+                        <input type="number" id="addprd-price" placeholder="Giá" min=0 required>
+                    </div>
+                    <div>
+                        <p>Ảnh: </p>
+                        <input type="file" id="addprd-img" required>
+                    </div>  
+                </div>  
+                <div class="addProduct-form-button">
+                    <div class="add-product">
+                        <button type="submit" id="add-product-btn">Thêm sản phẩm</button>
+                    </div>
+                </div>                 
+            </form>
+        </div>
+        <div class="product-list-content">
+            <div id="product-perform">
+                <!-- HIEN THI SAN PHAM -->
+                <!-- <div class="productlist-content-prd">
+                    <div class="productlist-content-prd-stt">
+                        <span>1</span>
+                    </div>
+                    <div class="productlist-content-prd-id">
+                        <span>i01</span>
+                    </div>
+                    <div class="productlist-content-prd-img">
+                        <div>
+                            <img src="../image/iphone11.png" alt="">
+                        </div>
+                    </div>
+                    <div class="productlist-content-prd-name">
+                        <span>iphone 11</span>
+                    </div>
+                    <div class="productlist-content-prd-brand">
+                        <span>iPhone</span>
+                    </div>
+                    <div class="productlist-content-prd-price">
+                        22.000.000
+                    </div>
+                    <div class="productlist-content-prd-btn">
+                        <div>
+                            <button type="button">
+                                <i class="fa-sharp fa-solid fa-gear"></i>
+                            </button>
+                        </div>
+                        <div>
+                            <button type="button">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div> --> 
+            </div>
+            <div id="page">
+                <!-- HIEN THI SO TRANG -->   
+            </div>
+            <!-- Phần chỉnh sửa sản phẩm -->
+            <div class="product-fix" id="product-fix">
+                <!-- HIEN THI CHINH SUA SAN PHAM -->
+            </div>
+        </div>
+    </div> 
+  
+    <!-- DANH SÁCH ĐƠN HÀNG -->
+    <div class="bill-list mySlides">
+        <div class="bill-list-header">
+            <h1>DANH SÁCH ĐƠN HÀNG</h1>
+            <div class="bill-list-filter">
+                <span>Từ ngày:</span>
+                &nbsp;
+                <input type="date" id="date-from" onchange="billFilter()">
+                &nbsp;
+                <span>đến</span>
+                &nbsp;
+                <input type="date" id="date-to" onchange="billFilter()">
+                &nbsp;
+                &nbsp;
+                <span>Tình trạng:</span>
+                &nbsp;
+                <select id="bill-status" onchange="billFilter()">
+                    <option value="false">Chưa xử lý</option>
+                    <option value="true">Đã xử lý</option>
+                </select>
+                <button type="button" id="bill-list-filter-btn1" onclick="billFilter()">Lọc</button>
+                &nbsp;
+                &nbsp;
+                <button type="button" id="bill-list-filter-btn2" onclick="showBillList()">Tất cả đơn hàng</button>
+            </div>
+            <div class="bill-list-table">
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Mã đơn hàng</th>
+                        <th style="width: 25%;">Tên khách hàng</th>
+                        <th style="width: 25%;">Ngày xuất đơn</th>
+                        <th style="width: 25%;">Tình trạng</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="bill-list-perform">
+            <table id="bill-list-perform">
+                    <!-- DANH SÁCH ĐƠN HÀNG -->
+            </table>
+        </div>
+        <div class="bill-list-detail" id="bill-list-detail" >
+            <!-- CHI TIẾT ĐƠN HÀNG -->
+        </div>
+    </div>
+
+    <!-- DANH SÁCH KHÁCH HÀNG -->
+    <div class="customer-list mySlides">
+        
+        <div class="customer-list-header">
+            <h1>DANH SÁCH KHÁCH HÀNG</h1>
+        </div>
+        <div class="customer-list-table">
+            <table>
+                <tr>
+                    <th style="width: 5%">Mã</th>
+                    <th style="width: 20%">Họ và tên</th>
+                    <th style="width: 15%">Tên đăng nhập</th>
+                    <th style="width: 20%">Mật khẩu</th>
+                    <th style="width: 20%">Số điện thoại</th>
+                    <th style="width: 10%">Ngày tạo</th>
+                    <th style="width: 10%">Xóa</th>
+                </tr>
+            </table>
+        </div>
+        <div class="customer-list-perform">
+            <table id="customerlistperform">
+
+            </table>
+        </div>
+        <form id="forminfocustomer">
+            
+        </form>
+    </div>
+
+    <!-- THỐNG KÊ DOANH THU -->
+    <div class="statistic mySlides">
+        <div class="statistic-header">
+            <h1>THỐNG KÊ DOANH THU</h1>
+            <div class="statistic-filter">
+                <span>Từ ngày:</span>
+                &nbsp;
+                <input type="date" id="date-from1" onchange="statisticFilter()">
+                &nbsp;
+                <span>đến</span>
+                &nbsp;
+                <input type="date" id="date-to1" onchange="statisticFilter()">
+                &nbsp;
+                &nbsp;
+                <select id="statistic-brand-filter" onchange="statisticFilter()">
+                    <option value="all">Tất cả</option>
+                    <option value="iphone">iPhone</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="xiaomi">Xiaomi</option>
+                    <option value="vivo">Vivo</option>
+                </select>
+                &nbsp;
+                &nbsp;
+                <button type="button" id="statistic-filter-btn">Lọc</button>
+            </div>
+            <div class="bill-list-table">
+                <table>
+                    <tr>
+                        <th style="width: 15%;">Mã sản phẩm</th>
+                        <th style="width: 50%;">Sản phẩm đã bán</th>
+                        <th style="width: 10%;">Số lượng</th>
+                        <th style="width: 25%;">Thành tiền</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="statistic-content" id="statistic-perform">
+            
+        </div>
+        <div class="statistic-total">
+            <span>Tổng doanh thu:</span>
+            &nbsp;
+            &nbsp;
+            <p id="statistic-totalprice"></p>
+        </div>
+    </div>
+
+</body> 
+<script src="https://kit.fontawesome.com/f26ba754df.js" crossorigin="anonymous"></script> 
+<script src="Admin.js"></script>
+</html>
